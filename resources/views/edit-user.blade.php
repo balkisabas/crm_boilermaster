@@ -24,7 +24,7 @@
     </div>
 </div>
 <!-- end page title -->
-<form action="update-user/{{$user->id}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ route('update', $user->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">
@@ -105,9 +105,7 @@
 
                         <div class="float-end">
                             <button type="submit" class="btn btn-primary">Update User</button>
-                            <form action="{{ route('senaraiUser') }}">
-                            <button type="submit" class="btn btn-primary" href="{{ route('senaraiUser') }}">Back</button>
-                            </form>
+                            <a href="{{ route('senaraiUser')}}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                 </div><!-- end card body -->
@@ -116,6 +114,5 @@
     </div> <!-- end row -->
 </form>
 @endsection
-
 
 
