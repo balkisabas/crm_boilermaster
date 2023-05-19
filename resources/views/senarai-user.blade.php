@@ -74,7 +74,7 @@
                                 <a href="edit-user/{{$m->id}}" class="btn btn-primary">Edit</a>
                                 @csrf
                                 @method('DELETE')
-                                <a href="" class="btn btn-danger">Delete</a> 
+                                <a href="" class="btn btn-danger" onclick="return confirm('Delete this record?')">Delete</a> 
                             </form>
                         </td>
                         </tr>    

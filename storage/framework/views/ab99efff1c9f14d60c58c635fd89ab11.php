@@ -75,7 +75,7 @@
                                 <a href="edit-user/<?php echo e($m->id); ?>" class="btn btn-primary">Edit</a>
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>
-                                <a href="" class="btn btn-danger">Delete</a> 
+                                <a href="" class="btn btn-danger" onclick="return confirm('Delete this record?')">Delete</a> 
                             </form>
                         </td>
                         </tr>    
