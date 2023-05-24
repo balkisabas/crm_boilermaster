@@ -8,12 +8,12 @@
         type="text/css" />
 @endsection
 @section('content')
-@if(session('success'))
+ <!-- start page title -->
+ @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
- <!-- start page title -->
  <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -53,36 +53,38 @@
                         </thead>
                         <tbody>
                         <tr>
-                        @php
-                        $i = 1;
-                        @endphp
-                        @if(count($user) === 0)
-                        <td colspan="10" align="center">No records found.</td>    
-                        
-                        @else
-                        @foreach ($user as $m)
-                        <td>{{$i++}}</td>
-                        <td>{{ $m->name}}</td>
-                        <td>{{ $m->email}}</td>
-                        <td>{{ $m->alternative_email}}</td>
-                        <td>{{ $m->phone}}</td>
-                        <td>{{ $m->position}}</td>
-                        <td>{{ $m->branch}}</td>
-                        <td>{{ $m->activation_status}}</td>
-                        <td>
-                            <form action="/senarai-user/{{$m->id}}" method="POST">
-                                <a href="edit-user/{{$m->id}}" class="btn btn-primary">Edit</a>
-                                @csrf
-                                @method('DELETE')
-                                <a href="" class="btn btn-danger" onclick="return confirm('Delete this record?')">Delete</a> 
-                            </form>
-                        </td>
+                            @php
+                            $i = 1;
+                            @endphp
+                            @if(count($user) === 0)
+                            <td colspan="10" align="center">No records found.</td>  
+                            @else
+                            @foreach ($user as $m)
+                            <td>{{$i++}}</td>
+                            <td>{{ $m->name}}</td>
+                            <td>{{ $m->email}}</td>
+                            <td>{{ $m->alternative_email}}</td>
+                            <td>{{ $m->phone}}</td>
+                            <td>{{ $m->position}}</td>
+                            <td>{{ $m->branch}}</td>
+                            @if($m->activation_status == 'Yes')
+                                <td><span class="badge bg-success fs-6">{{ $m->activation_status}}</span></td>
+                            @else
+                                <td><span class="badge bg-danger fs-6">{{ $m->activation_status}}</span></td>
+                            @endif
+                            <td>
+                                <form action="{{ route('destroy', $m->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="edit-user/{{$m->id}}" ><i class="bx bx-edit-alt" title="Edit"></i></a>
+                                    <a href=""><i class="bx bx-trash"  onclick="return confirm('Delete this record?')" title="Delete"></i></a>
+                                </form>
+                            </td>
                         </tr>    
                         @endforeach
                         @endif
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div> <!-- end col -->

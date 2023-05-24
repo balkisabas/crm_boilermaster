@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title'); ?>
     <?php echo app('translator')->get('translation.Register'); ?> 2
 <?php $__env->stopSection(); ?>

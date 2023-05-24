@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('proposal_docs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('rfqid');
+            $table->string('document_name');
+            $table->string('document_type');
+            $table->string('filename');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('proposal_docs');
     }
 };

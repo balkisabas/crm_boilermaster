@@ -14,214 +14,246 @@
 @endif
  <!-- start page title -->
  <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Create New RFQ</h4>
-            
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                                            <li class="breadcrumb-item">RFQ</li>
-                                            <li class="breadcrumb-item active">Create New RFQ</li>
-                                        </ol>
-                                    </div>
-            
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 font-size-18">Create New RFQ</h4>
+
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                        <li class="breadcrumb-item">RFQ</li>
+                        <li class="breadcrumb-item active">Create New RFQ</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <form action="{{ route('daftarRfq') }}" method="POST" class="form-horizontal"   enctype="multipart/form-data">
+    @csrf               
+    @if (session('status'))
+        <h6 class="alert alert-success">{{ session('status') }}</h6>
+    @endif
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-4 d-flex justify-content-between align-items-center">Create New RFQ
+                    </h3>
+                    <form>
+                        <div class="row">                                            
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="branch" class="form-label">Company<span style="color:red">*</span></label>
+                                    <select id="branch" name="branch" class="form-control">
+                                    <option value="">-Please Select Branch-</option>
+                                    @foreach ($branches as $k)
+                                        <option value="{{$k->description}}" {{$k->id == $k->branch? 'selected':''}}>{{$k->description}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="pic" class="form-label">Person In Charge <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="pic" name="pic" placeholder="Enter the person in charge's name">
                                 </div>
                             </div>
                         </div>
-                        <!-- end page title -->
-            
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h3 class="card-title mb-4 d-flex justify-content-between align-items-center">Create New RFQ
-                                        </h3>
-                                        <form>
-                                            <div class="row">                                            
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Branch<span style="color:red">*</span></label>
-                                                        <select name="company" id="company" class="form-control" required>
-                                                            <option value="" disabled selected hidden>Select Branch</option>
-                                                            <option value="">Labuan</option>
-                                                            <option value="">Shah Alam</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Person In Charge <span style="color:red">*</span></label>
-                                                        <input type="text" class="form-control" id="pic" placeholder="Enter the person in charge's name" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">  
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Type<span style="color:red">*</span></label>
-                                                        <input type="text" class="form-control" id="type" placeholder="Enter type" required>
-                                                    </div>
-                                                </div>                                          
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Customer <span style="color:red">*</span></label>
-                                                        <input type="text" class="form-control" id="cust" placeholder="Enter the customer's name" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">   
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Customer PIC<span style="color:red">*</span></label>
-                                                        <input type="text" class="form-control" id="cust_pic" placeholder="Enter customer PIC" required>
-                                                    </div>
-                                                </div>                                  
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Customer Email <span style="color:red">*</span></label>
-                                                        <input type="email" class="form-control" id="cust_email" placeholder="Enter the customer's email" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">   
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">RFQ Number <span style="color:red">*</span></label>
-                                                        <input type="number" class="form-control" id="rfq_num" placeholder="Enter RFQ number" required>
-                                                    </div>
-                                                </div>                                  
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">RFQ Title <span style="color:red">*</span></label>
-                                                        <input type="text" class="form-control" id="rfq_title" placeholder="Enter RFQ tilte" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">   
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Due Date <span style="color:red">*</span></label>
-                                                        <input type="date" class="form-control" id="due_date" required>
-                                                    </div>
-                                                </div>                                  
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Final Pricing <span style="color:red">*</span></label>
-                                                        <input type="number" class="form-control" id="final_pricing" placeholder="Enter final pricing" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">   
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Status<span style="color:red">*</span></label>
-                                                        <select name="company" id="company" class="form-control" required>
-                                                            <option value="" disabled selected hidden>Select Status</option>
-                                                            <option value="">Submitted</option>
-                                                            <option value="">Decline</option>
-                                                            <option value="">Awarded</option>
-                                                            <option value="">In-Progress</option>
-                                                            <option value="">Customer Review</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Customer PO Number <span style="color:red">*</span></label>
-                                                        <input type="number" class="form-control" id="cust_po_num" placeholder="Enter customer PO number" required>
-                                                    </div>
-                                                </div>   
-                                            </div>
-                                            <div class="row"> 
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Date Award <span style="color:red">*</span></label>
-                                                        <input type="date" class="form-control" id="date_award"  required>
-                                                    </div>
-                                                </div> 
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="from" class="form-label">Award Amount <span style="color:red">*</span></label>
-                                                        <input type="number" class="form-control" id="award_amt" placeholder="Enter award amount" required>
-                                                    </div>  
-                                                </div> 
-                                            </div>
-                                            <table id="datatable" class="table table-striped dataTable no-footer nowrap w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Document Name</th>
-                                                        <th>Document Type</th>
-                                                        <th>File</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><input type="text" class="form-control" id="doc_name" name="doc_name" placeholder="Enter document name" required></td>
-                                                        <td><select name="doc_type" id="doc_type" class="form-control" required>
-                                                            <option value="" disabled selected hidden>Select Document Type</option>
-                                                            <option value="">Tender Document</option>
-                                                            <option value="">Submission Document</option>
-                                                            <option value="">Final Quotation</option>
-                                                            <option value="">Customer PO</option>
-                                                            <option value="">Costing Sheet</option>
-                                                            <option value="">Supplier Quptation</option>
-                                                            <option value="">Supporting Document</option>
-                                                            <option value="">Contact</option>
-                                                        </select></td>
-                                                        <td><input type="file" class="form-control" id="filename" name="filename"  required></td>
-                                                        <td><button type="submit" class="btn btn-success w-md">Add</button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <table id="datatable1" class="table table-striped dataTable no-footer nowrap w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Document Name</th>
-                                                        <th>Document Type</th>
-                                                        <th>File</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Sample document 1</td>
-                                                        <td>Tender Document</td>
-                                                        <td>Sample1.pdf</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Sample document 2</td>
-                                                        <td>Tender Document</td>
-                                                        <td>Sample2.pdf</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Sample document 3</td>
-                                                        <td>Submission Document</td>
-                                                        <td>Sample3.pdf</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="float-end">
-                                                <button type="submit" class="btn btn-success w-md">Add</button>
-                                                <button type="reset" class="btn btn-danger w-md">Delete</button>
-                                                
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!-- end card body -->
+                        <div class="row">  
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="type" class="form-label">Type<span style="color:red">*</span></label>
+                                    <select id="type" name="type" class="form-control">
+                                    <option value="">-Please Select Type-</option>
+                                    @foreach ($rfq_type as $m)
+                                        <option value="{{$m->description}}" {{$m->id == $m->rfq_status? 'selected':''}}>{{$m->description}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-            
-                    </div> <!-- container-fluid -->
+                            </div>                                          
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="cust_name" class="form-label">Customer <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="cust_name" name="cust_name" placeholder="Enter the customer's name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">   
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="cust_pic" class="form-label">Customer PIC<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="cust_pic" name="cust_pic" placeholder="Enter customer PIC">
+                                </div>
+                            </div>                                  
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="cust_email" class="form-label">Customer Email <span style="color:red">*</span></label>
+                                    <input type="email" class="form-control" id="cust_email" name="cust_email" placeholder="Enter the customer's email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">   
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="rfq_no" class="form-label">RFQ Number <span style="color:red">*</span></label>
+                                    <input type="number" class="form-control" id="rfq_no" name="rfq_no" placeholder="Enter RFQ number">
+                                </div>
+                            </div>                                  
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="rfq_title" class="form-label">RFQ Title <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="rfq_title" name="rfq_title" placeholder="Enter RFQ tilte">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">   
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="due_date" class="form-label">Due Date <span style="color:red">*</span></label>
+                                    <input type="date" class="form-control" id="due_date" name="due_date">
+                                </div>
+                            </div>                                  
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="final_pricing" class="form-label">Final Pricing <span style="color:red">*</span></label>
+                                    <input type="number" class="form-control" id="final_pricing" name="final_pricing" placeholder="Enter final pricing">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">   
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="rfq_status" class="form-label">Status<span style="color:red">*</span></label>
+                                    <select id="rfq_status" name="rfq_status" class="form-control">
+                                    <option value="">-Please Select Status-</option>
+                                    @foreach ($rfq_status as $n)
+                                        <option value="{{$n->description}}" {{$n->id == $n->rfq_status? 'selected':''}}>{{$n->description}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="cust_po_no" class="form-label">Customer PO Number <span style="color:red">*</span></label>
+                                    <input type="number" class="form-control" id="cust_po_no" name="cust_po_no" placeholder="Enter customer PO number">
+                                </div>
+                            </div>   
+                        </div>
+                        <div class="row"> 
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="date_award" class="form-label">Date Award <span style="color:red">*</span></label>
+                                    <input type="date" class="form-control" id="date_award" name="date_award">
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="award_amount" class="form-label">Award Amount <span style="color:red">*</span></label>
+                                    <input type="number" class="form-control" id="award_amount" name="award_amount" placeholder="Enter award amount">
+                                </div>  
+                            </div> 
+                        </div>
+                        <br>
+                        <div id="textFieldsContainer">
+                            <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="document_name">Document Name</label>
+                                        <input type="text" class="form-control" id="document_name"  name="data1[]" placeholder="Enter document name">
+                                    </div>
+                                </div> 
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                    <label for="document_type" class="form-label">Documents Type<span style="color:red">*</span></label>
+                                        <select id="document_type" name="data2[]" class="form-control">
+                                            <option value="">-Please Select Document Type-</option>
+                                            @foreach ($docs as $k)
+                                                <option value="{{$k->description}}" {{$k->id == $k->docs? 'selected':''}}>{{$k->description}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>  
+                                </div> 
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label for="files" class="form-label">File <span style="color:red">*</span></label>
+                                        <input type="file" id="files" name="files[]" class="form-control">
+                                    </div> 
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="button" name="tmb" id="addTextField" class="btn btn-success w-md" style="margin-top: 27px;">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>  
+                        <div class="float-end">
+                            <button type="submit" class="btn btn-success w-md">Add</button>
+                            <button type="reset" class="btn btn-danger w-md">Delete</button>
+                        </div>
+                    </form>
                 </div>
-                <!-- End Page-content -->
+                <!-- end card body -->
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+</div> <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    
+    $(document).ready(function() {
+        // Add new text field
+        $('#addTextField').click(function() {
+            var newTextField = $(`  <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                            <label for="document_name">Document Name</label>
+                                                <input type="text" class="form-control" id="document_name"  name="data1[]" placeholder="Enter document name">
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                            <label for="document_type" class="form-label">Documents Type<span style="color:red">*</span></label>
+                                                <select id="document_type" name="data2[]" class="form-control">
+                                                    <option value="">-Please Select Document Type-</option>
+                                                    @foreach ($docs as $k)
+                                                        <option value="{{$k->description}}" {{$k->id == $k->docs? 'selected':''}}>{{$k->description}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>  
+                                        </div> 
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label for="files" class="form-label">File <span style="color:red">*</span></label>
+                                                <input type="file" id="files" name="files[]" class="form-control">
+                                            </div> 
+                                        </div> 
+                                        <div class="col-sm-1">
+                                            <button type="button" name="tmb" id="addTextField" class="btn btn-warning w-md  col-sm-1 removeTextField" style="margin-top: 27px;">Remove</button>
+                                         </div>
+                                    </div> `);
+            $('#textFieldsContainer').append(newTextField);
+        });
+
+        // Remove text field
+        $(document).on('click', '.removeTextField', function() {
+            var button = event.target; // Get the button element
+            var parentDiv = button.parentNode; // Get the parent div
+            var grandParentDiv = parentDiv.parentNode; // Get the grandparent div
+
+            grandParentDiv.remove();
+
+
+        });
+    });
+</script>
 
 @endsection
+
 
 
 

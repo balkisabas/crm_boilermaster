@@ -10,7 +10,7 @@
                 <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
 
                 <li>
-                    <a href="javascript: void(0);" >
+                    <a href="{{route('dashboard')}}" >
                         <i class="bx bx-home-circle"></i>
                         <span key="t-dashboards">@lang('translation.Dashboards')</span>
                     </a>
@@ -23,12 +23,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="proposal-form" key="t-vertical">Registration</a>
+                            <a href="{{route('proposal-form')}}" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="proposal-list" key="t-vertical">Listing</a>
+                            <a href="{{route('proposal-list')}}" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>
@@ -40,12 +40,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="{{ route('borang-user') }}" key="t-vertical">Registration</a>
+                            <a href="{{route('new-user')}}" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="{{ route('senaraiUser') }}" key="t-vertical">Listing</a>
+                            <a href="{{route('user-list')}}" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>
@@ -57,12 +57,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Registration</a>
+                            <a href="{{route('index_customer')}}" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Listing</a>
+                            <a href="{{route('list_customer')}}" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>
@@ -74,12 +74,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Registration</a>
+                            <a href="{{ route('index_vendor') }}" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Listing</a>
+                            <a href="{{ route('list_vendor') }}" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>

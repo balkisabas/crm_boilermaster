@@ -33,10 +33,8 @@
 <!-- end page title -->
 <form action="{{ route('store') }}" method="POST" class="form-horizontal"   enctype="multipart/form-data">
     @csrf
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    @if (session('status'))
+        <h6 class="alert alert-success">{{ session('status') }}</h6>
     @endif
     <div class="row">
         <div class="col-12">
@@ -48,13 +46,13 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name <span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password <span style="color:red">*</span></label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                                 </div>
                             </div>
                         </div>

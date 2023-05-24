@@ -24,7 +24,7 @@
     </div>
 </div>
 <!-- end page title -->
-<form action="<?php echo e(route('update', $user->id)); ?>" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form action="update-user/<?php echo e($user->id); ?>" method="POST" class="form-horizontal" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
     <?php echo method_field('PUT'); ?>
     <div class="row">
@@ -105,7 +105,9 @@
 
                         <div class="float-end">
                             <button type="submit" class="btn btn-primary">Update User</button>
-                            <a href="<?php echo e(route('senaraiUser')); ?>" class="btn btn-secondary">Cancel</a>
+                            <form action="<?php echo e(route('senaraiUser')); ?>">
+                            <button type="submit" class="btn btn-primary" href="<?php echo e(route('senaraiUser')); ?>">Back</button>
+                            </form>
                         </div>
                     </form>
                 </div><!-- end card body -->
@@ -114,6 +116,7 @@
     </div> <!-- end row -->
 </form>
 <?php $__env->stopSection(); ?>
+
 
 
 

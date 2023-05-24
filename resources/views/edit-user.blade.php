@@ -19,7 +19,6 @@
                     <li class="breadcrumb-item active">Edit User</li>
                 </ol>
             </div>
-
         </div>
     </div>
 </div>
@@ -31,7 +30,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-4 d-flex justify-content-between align-items-center">Create New User</h3>
+                    <h3 class="card-title mb-4 d-flex justify-content-between align-items-center">Update User Details</h3>
                     <form>
                         <div class="row">                                            
                             <div class="col-md-6">
@@ -104,7 +103,7 @@
                         </div>
 
                         <div class="float-end">
-                            <button type="submit" class="btn btn-primary">Update User</button>
+                            <button type="submit" class="btn btn-primary"  onclick="return confirm('Are you sure want to update this record?')">Update User</button>
                             <a href="{{ route('senaraiUser')}}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>

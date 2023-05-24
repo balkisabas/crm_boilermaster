@@ -10,7 +10,7 @@
                 <li class="menu-title" key="t-menu"><?php echo app('translator')->get('translation.Menu'); ?></li>
 
                 <li>
-                    <a href="javascript: void(0);" >
+                    <a href="<?php echo e(route('dashboard')); ?>" >
                         <i class="bx bx-home-circle"></i>
                         <span key="t-dashboards"><?php echo app('translator')->get('translation.Dashboards'); ?></span>
                     </a>
@@ -23,12 +23,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="proposal-form" key="t-vertical">Registration</a>
+                            <a href="<?php echo e(route('proposal-form')); ?>" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="proposal-list" key="t-vertical">Listing</a>
+                            <a href="<?php echo e(route('proposal-list')); ?>" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>
@@ -40,12 +40,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="<?php echo e(route('borang-user')); ?>" key="t-vertical">Registration</a>
+                            <a href="<?php echo e(route('new-user')); ?>" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="<?php echo e(route('senaraiUser')); ?>" key="t-vertical">Listing</a>
+                            <a href="<?php echo e(route('user-list')); ?>" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>
@@ -57,12 +57,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Registration</a>
+                            <a href="<?php echo e(route('index_customer')); ?>" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Listing</a>
+                            <a href="<?php echo e(route('list_customer')); ?>" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>
@@ -74,12 +74,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Registration</a>
+                            <a href="<?php echo e(route('index_vendor')); ?>" key="t-vertical">Registration</a>
                         </li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
-                            <a href="javascript: void(0);" key="t-vertical">Listing</a>
+                            <a href="<?php echo e(route('list_vendor')); ?>" key="t-vertical">Listing</a>
                         </li>
                     </ul>
                 </li>

@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?php echo e(URL::asset('/build/images/logo.svg')); ?>" alt="" height="22">
+                        <img src="<?php echo e(URL::asset ('/build/images/BoilerMaster.png')); ?>" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo e(URL::asset('/build/images/logo-dark.png')); ?>" alt="" height="17">
+                        <img src="<?php echo e(URL::asset ('/build/images/BoilerMaster.png')); ?>" alt="" height="70" width="150">
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?php echo e(URL::asset('/build/images/logo-light.svg')); ?>" alt="" height="22">
+                        <img src="<?php echo e(URL::asset ('/build/images/BoilerMaster.png')); ?>" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo e(URL::asset('/build/images/logo-light.png')); ?>" alt="" height="19">
+                        <img src="<?php echo e(URL::asset ('/build/images/BoilerMaster.png')); ?>" alt="" height="70" width="150">
                     </span>
                 </a>
             </div>
