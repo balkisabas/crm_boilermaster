@@ -94,49 +94,10 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                         
-
-    @endsection
-    @section('script')
-    <!-- owl.carousel js -->
-    <script src="{{ URL::asset('/build/libs/owl.carousel/owl.carousel.min.js') }}"></script>
-    <!-- auth-2-carousel init -->
-    <script src="{{ URL::asset('/build/js/pages/auth-2-carousel.init.js') }}"></script>
-    @endsection
+@endsection
+@section('script')
+<!-- owl.carousel js -->
+<script src="{{ URL::asset('/build/libs/owl.carousel/owl.carousel.min.js') }}"></script>
+<!-- auth-2-carousel init -->
+<script src="{{ URL::asset('/build/js/pages/auth-2-carousel.init.js') }}"></script>
+@endsection
