@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('proposals', ProposalController::class);
     Route::resource('customers', CustomersController::class);
     Route::resource('branches', BranchesController::class);
-    Route::resource('vendors', VendorController::class);
+    Route::resource('vendors', 'App\Http\Controllers\VendorController');
     Route::get('delete_doc/{id}/{rfqid}', [ProposalController::class, 'delete_doc'])->name('delete_doc');
     Route::get('delete_pic_vendor/{id}/{page_modual}/{parent_id}', 'App\Http\Controllers\VendorController@delete_pic')->name('delete_pic_vendor'); 
     Route::get('delete_pic_customer/{id}/{page_modual}/{parent_id}', [CustomersController::class, 'delete_pic'])->name('delete_pic_customer'); 
