@@ -43,9 +43,10 @@ class ProposalController extends Controller
         $rfq_status = Rfqstatuses::where('delete_status', 'active')->get();
         $docs = Documents::where('delete_status', 'active')->get();
         $pic = Personincharge::select(['name'])
-                        ->where('status', 'Active')
-                        ->get();
-        $customer = Customer::select(['name', 'status'])
+                                ->where('status', 'Active')
+                                ->where('assign', 'customer')
+                                ->get();
+        $customer = Customer::select(['name'])
                                 ->where('assign', 'customer')
                                 ->where('active_status', 'Active')
                                 ->get();
