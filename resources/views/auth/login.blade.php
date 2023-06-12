@@ -85,7 +85,7 @@
                             </div>
                         </form>
                         <div class="mt-5 text-center">
-                            <p>Don't have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary"> Signup now </a> </p>
+                            <!-- <p>Don't have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary"> Signup now </a> </p> -->
                             <p>© <script>document.write(new Date().getFullYear())</script> BoilerMaster</p>
                         </div>
                 </div>
