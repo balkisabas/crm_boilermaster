@@ -27,6 +27,7 @@ class CreateAdminUserSeeder extends Seeder
             'company' => 'BOILERMASTER SDN BHD',
             'status' => 'active',
             'delete_status' => 'Active',
+            'zohoemail_code' => '1234',
         ]);
       
         $role = Role::create(['name' => 'admin']);
