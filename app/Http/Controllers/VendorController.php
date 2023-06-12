@@ -228,10 +228,11 @@ class VendorController  extends Controller
     {
         $userupdate =  vendor::find($id);
         $userupdate->active_status = 'delete'; 
-        $userupdate->reg_no = $userupdate->reg_no.'@deleted'; 
+        $userupdate->reg_no = $userupdate->reg_no.'/deletedregno'; 
         $userupdate->save();
-        Personincharge::where('fk', $id) 
-                    ->update(['status' => 'delete']);
+       
+        Personincharge::where('fk', $id)
+                        ->update(['Active_status' => 'delete', 'status' => 'delete']);
         return redirect()->route('vendors.index')->with('success','Vendor Deleted Successfully.');
     }
 
@@ -239,6 +240,7 @@ class VendorController  extends Controller
     {
         $picupdate =  Personincharge::find($id);
         $picupdate->status = 'delete'; 
+        $picupdate->Active_status = 'delete'; 
         $picupdate->save();
 
         $value = $parent_id."@".$page_modual;

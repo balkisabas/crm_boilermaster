@@ -223,13 +223,12 @@ class CustomersController extends Controller
 
     public function destroy($id)
     {
-        $userupdate =  customer::find($id);
+        $userupdate =  Customer::find($id);
         $userupdate->active_status = 'delete'; 
-        $userupdate->reg_no = $userupdate->reg_no.'@deleted'; 
+        $userupdate->reg_no = $userupdate->reg_no.'@deletedregno'; 
         $userupdate->save();
- 
-        Personincharge::where('fk', $id) 
-                    ->update(['status' => 'delete']);
+        Personincharge::where('fk', $id)
+                        ->update(['Active_status' => 'delete', 'status' => 'delete']);
         return redirect()->route('customers.index')->with('success','Customer Deleted Successfully.');
     }
 
@@ -237,11 +236,11 @@ class CustomersController extends Controller
     {
         $picupdate =  Personincharge::find($id);
         $picupdate->active_status = 'delete'; 
+        $picupdate->status = 'delete'; 
         $picupdate->save();
 
         $value = $parent_id."@".$page_modual;
 
         return redirect()->route('customers.edit', ['customer' => $value]);     
     }
- 
 }
