@@ -1,0 +1,28 @@
+  $table->id();
+            $table->string('name');
+            $table->string('password');
+            $table->string('email')->unique();
+            $table->string('alternative_email')->unique()->nullable();
+            $table->string('phone')->nullable();;
+            $table->string('position')->nullable();;
+            $table->string('company')->nullable();;
+            $table->string('status')->nullable();;
+            $table->string('delete_status')->default('Active');
+            $table->timestamps();
+
+
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'alternative_email',
+        'phone',
+        'position',
+        'company',
+        'status'
+    ];
+
+    protected $hidden = [
+        'password',
+    ];

@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+
+
+class CreateUsersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            User::create(['name' => 'admin','dob'=>'2000-10-10','email' => 'admin@themesbrand.com','password' => Hash::make('123456'),'email_verified_at'=>'2022-01-02 17:04:58','avatar' => 'images/avatar-1.jpg','created_at' => now(),]);
+        });
+        
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('users');
+    }
+}
+
+//balkis - parameter role
+Route::middleware('auth')->group(function () {
+  Route::get('role-index',[App\Http\Controllers\RoleController::class, 'index'])->name('role-index');
+  Route::get('create-role',[App\Http\Controllers\RoleController::class, 'create'])->name('create-role');
+  Route::post('store-role/{id?}',[App\Http\Controllers\RoleController::class, 'store'])->name('store-role');
+  Route::get('role-list',[App\Http\Controllers\RoleController::class, 'roleList'])->name('roleList');
+  Route::get('view-role/{id}', [App\Http\Controllers\RoleController::class, 'viewrole'])->name('viewrole');
+  Route::get('edit-role/{id}', [App\Http\Controllers\RoleController::class, 'editrole'])->name('editrole');
+  Route::put('update-role/{id}', [App\Http\Controllers\RoleController::class, 'updaterole'])->name('updaterole');
+  Route::get('delete-role/{id}', [App\Http\Controllers\RoleController::class, 'destroyrole'])->name('destroyrole');
+});

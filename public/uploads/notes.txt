@@ -1,0 +1,22 @@
+step to install/run project crm
+
+1. composer install
+2. composer require spatie/laravel-permission
+3. composer require laravelcollective/html
+4. php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+5. php artisan migrate
+6. php artisan db:seed --class=PermissionTableSeeder
+7. php artisan db:seed --class=CreateAdminUserSeeder
+
+utk first time login
+
+username: balkisabas@zetasb.com.my
+password: 123456
+
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=boilermaster_crm
+DB_USERNAME=root
+DB_PASSWORD=

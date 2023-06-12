@@ -1,0 +1,3 @@
+proposal - pic - dtg dari user table
+
+cust pic - table pic - filter - assign - customer

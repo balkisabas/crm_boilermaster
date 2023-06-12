@@ -1,0 +1,41 @@
+   $table->id();
+            $table->integer('rfq_id')->unsigned();
+            $table->string('branch');
+            $table->string('pic');
+            $table->string('type');
+            $table->string('cust_name');
+            $table->string('cust_pic');
+            $table->string('cust_email');
+            $table->string('rfq_no');
+            $table->string('rfq_title');
+            $table->date('due_date');
+            $table->string('final_pricing');
+            $table->string('rfq_status');
+            $table->string('cust_po_no');
+            $table->date('date_award');
+            $table->string('award_amount');
+            $table->string('document_name');
+            $table->string('document_type');
+            $table->string('size');
+            $table->string('location');
+            $table->string('status');
+            $table->timestamps();
+
+
+
+     'branch',
+       'pic',
+       'type',
+       'cust_name',
+       'cust_pic',
+       'cust_email',
+       'rfq_no',
+       'rfq_title',
+       'due_date',
+       'final_pricing',
+       'rfq_status',
+       'cust_po_no',
+       'date_award',
+       'award_amount',
+       'document_name',
+       'document_type',

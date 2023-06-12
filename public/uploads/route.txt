@@ -1,0 +1,9 @@
+Route::middleware('auth')->group(function () {
+    Route::get('proposal-form', [App\Http\Controllers\ProposalController::class, 'index'])->name('proposal-form');
+    Route::post('daftar-rfq/{id?}', [App\Http\Controllers\ProposalController::class, 'daftarRfq'])->name('daftarRfq');
+    Route::get('proposal-list', [App\Http\Controllers\ProposalController::class, 'senaraiRfq'])->name('proposal-list');
+    Route::get('senarai-docs/{id}', [App\Http\Controllers\ProposalController::class, 'viewDocsForm'])->name('viewDocsForm');
+    Route::post('tambah-docs/{id?}', [App\Http\Controllers\ProposalController::class, 'tambahPropsalDocs'])->name('tambahPropsalDocs');
+    Route::get('edit-proposal/{id}', [App\Http\Controllers\ProposalController::class, 'editProposal'])->name('editProposal');
+    Route::put('update-proposal/{id}', [App\Http\Controllers\ProposalController::class, 'updateProposal'])->name('updateProposal');
+});
