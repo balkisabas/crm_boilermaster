@@ -6,7 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\PositionsController;
-use App\Http\Controllers\RfqTypesController;
+use App\Http\Controllers\RfqtypesController;
 use App\Http\Controllers\RfqStatusController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProposalController;
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('companies', CompaniesController::class);
     Route::resource('documents', DocumentsController::class);
     Route::resource('positions', PositionsController::class);
-    Route::resource('rfqtypes', RfqTypesController::class);
+    Route::resource('rfqtypes', RfqtypesController::class);
     Route::resource('rfqstatus', RfqStatusController::class);
     Route::resource('users', UserController::class);
     Route::resource('proposals', ProposalController::class);
