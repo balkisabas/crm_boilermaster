@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Customer;
-use App\Models\branches;
+use App\Models\Branches;
 use App\Models\Personincharge;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -27,7 +27,7 @@ class CustomersController extends Controller
         
         $page_modual= 'customer';
         $data =  Customer::where('active_status', 'Active')->get();
-        $branch =  branches::all();
+        $branch =  Branches::all();
         return  view('customers.index', compact('branch','data', 'page_modual'));
  
     }

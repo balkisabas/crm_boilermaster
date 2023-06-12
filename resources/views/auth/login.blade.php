@@ -32,7 +32,7 @@
                             <a href="" class="auth-logo-light">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title bg-light">
-                                        <img src="{{ URL::asset ('/build/images/logo.png') }}" alt="" width="110" height="85">
+                                        <img src="{{ URL::asset ('/build/images/logo.PNG') }}" alt="" width="110" height="85">
                                     </span>
                                 </div>
                             </a>
@@ -40,7 +40,7 @@
                             <a href="" class="auth-logo-dark">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title  bg-light">
-                                        <img src="{{ URL::asset ('/build/images/logo.png') }}" alt="" width="80" height="70">
+                                        <img src="{{ URL::asset ('/build/images/logo.PNG') }}" alt="" width="80" height="70">
                                     </span>
                                 </div>
                             </a>
