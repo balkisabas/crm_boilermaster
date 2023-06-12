@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\App;
-use App\Models\branches;
+use App\Models\Branches;
 use App\Models\Personincharge;
 use App\Models\Vendor; 
 use App\Models\User; 
