@@ -10,7 +10,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('zohoemail_code');
+            $table->string('zohoemail_code')->nullable();
         });
     }
 

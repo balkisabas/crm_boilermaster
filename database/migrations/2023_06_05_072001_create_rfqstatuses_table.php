@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rfqstatuses', function (Blueprint $table) {
             $table->id();
-            $table->integer('code');
-            $table->string('name');
+            $table->integer('code')->nullabale();
+            $table->string('name')->nullabale();
             $table->string('delete_status')->default('Active');
             $table->timestamps();
         });

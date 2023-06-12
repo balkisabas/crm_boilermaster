@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('company_name',255);
-            $table->string('address',255);
+            $table->string('company_name',255)->nullabale();
+            $table->string('address',255)->nullabale();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->string('status');
+            $table->string('status')->nullabale();
             $table->string('delete_status')->default('Active');
             $table->timestamps();
         });
