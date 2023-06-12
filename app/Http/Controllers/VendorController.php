@@ -22,7 +22,7 @@ class VendorController  extends Controller
     {
         $page_modual= 'vendor';
         $data =  vendor::where('active_status', 'Active') ->get();
-        $branch =  branches::all();
+        $branch =  Branches::all();
         return  view('vendors.index', compact('branch','data', 'page_modual'));
 
     }
@@ -228,9 +228,10 @@ class VendorController  extends Controller
     {
         $userupdate =  vendor::find($id);
         $userupdate->active_status = 'delete'; 
+        $userupdate->reg_no = $userupdate->reg_no.'@deleted'; 
         $userupdate->save();
         Personinchanrge::where('fk', $id) 
-                            ->update(['Active_status' => 'delete']);
+                    ->update(['status' => 'delete']);
         return redirect()->route('vendors.index')->with('success','Vendor Deleted Successfully.');
     }
 
