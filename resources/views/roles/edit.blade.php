@@ -7,6 +7,10 @@
       display: inline-block;
       margin-right: 40px;
     }
+    .checkbox-list {
+        column-count: 5;
+        column-gap: 10px;
+    }
   </style>
 
 @section('content')
@@ -58,11 +62,13 @@
                                 <div class="mb-3">
                                     <label  class="form-label">Permission <span style="color:red">*</span></label>
                                     <br>
+                                    <div class="checkbox-list">
                                     @foreach($permission as $value)
                                         <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
                                         {{ $value->name }}</label>
                                     <br/>
                                     @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
