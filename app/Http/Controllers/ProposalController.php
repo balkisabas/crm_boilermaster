@@ -47,7 +47,7 @@ class ProposalController extends Controller
                         ->get();
         $customer = Customer::select(['name', 'status'])
                                 ->where('assign', 'customer')
-                                ->where('status', 'Active')
+                                ->where('active_status', 'Active')
                                 ->get();
         $picUser = User::where('delete_status', 'active')->get();
         return view('proposals.create', compact('company', 'rfq_type', 'rfq_status', 'docs', 'pic', 'customer', 'picUser'));
