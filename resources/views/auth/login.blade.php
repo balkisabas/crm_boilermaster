@@ -1,14 +1,13 @@
 @extends('layouts.master-without-nav')
 
-@section('title')
-@lang('translation.Login')
-@endsection
+@section('title', 'BoilerMaster') 
 
 @section('css')
 <!-- owl.carousel css -->
     <link rel="stylesheet" href="{{ URL::asset('/build/libs/owl.carousel/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/build/libs/owl.carousel/assets/owl.theme.default.min.css') }}">
 @endsection
+
 @section('content')
 <div class="account-pages my-5 pt-sm-5">
     <div class="container">

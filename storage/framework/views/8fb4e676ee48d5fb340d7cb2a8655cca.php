@@ -65,8 +65,10 @@
                                 <?php endif; ?>
                             </td>
                         </tr>
-                       
-                       
+                        <tr>
+                            <th class="widthtable">Zoho email permission code</th>
+                            <td><?php echo e($user->zohoemail_code); ?></td>
+                        </tr>
                     </thead>
                 </table>
             </div>

@@ -65,8 +65,10 @@
                                 @endif
                             </td>
                         </tr>
-                       
-                       
+                        <tr>
+                            <th class="widthtable">Zoho email permission code</th>
+                            <td>{{ $user->zohoemail_code}}</td>
+                        </tr>
                     </thead>
                 </table>
             </div>

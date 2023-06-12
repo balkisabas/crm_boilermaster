@@ -11,9 +11,9 @@ use App\Http\Controllers\RfqStatusController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\CustomersController;
-use App\http\controllers\BranchesController;
-use App\http\controllers\VendorController;
-use App\http\controllers\DashboardController; 
+use App\http\Controllers\BranchesController;
+use App\http\Controllers\VendorController;
+use App\http\Controllers\DashboardController; 
 
 /*
 |--------------------------------------------------------------------------

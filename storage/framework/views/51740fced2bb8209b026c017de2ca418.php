@@ -1,12 +1,11 @@
-<?php $__env->startSection('title'); ?>
-<?php echo app('translator')->get('translation.Login'); ?>
-<?php $__env->stopSection(); ?>
+<?php $__env->startSection('title', 'BoilerMaster'); ?> 
 
 <?php $__env->startSection('css'); ?>
 <!-- owl.carousel css -->
     <link rel="stylesheet" href="<?php echo e(URL::asset('/build/libs/owl.carousel/assets/owl.carousel.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(URL::asset('/build/libs/owl.carousel/assets/owl.theme.default.min.css')); ?>">
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <div class="account-pages my-5 pt-sm-5">
     <div class="container">

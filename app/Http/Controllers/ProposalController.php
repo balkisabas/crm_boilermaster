@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Proposal;
 use App\Models\ProposalDoc;
 use App\Models\Companies;
-use App\Models\RfqStatuses;
+use App\Models\Rfqstatuses;
 use App\Models\Rfqtypes;
 use App\Models\Documents;
 use Illuminate\Http\Request;
@@ -40,7 +40,7 @@ class ProposalController extends Controller
     {
         $company = Companies::where('delete_status', 'active')->get();
         $rfq_type = Rfqtypes::where('delete_status', 'active')->get();
-        $rfq_status = RfqStatuses::where('delete_status', 'active')->get();
+        $rfq_status = Rfqstatuses::where('delete_status', 'active')->get();
         $docs = Documents::where('delete_status', 'active')->get();
         $pic = Personincharge::select(['name'])
                         ->where('status', 'Active')
@@ -123,7 +123,7 @@ class ProposalController extends Controller
     {
         $company = Companies::where('delete_status', 'active')->get();
         $rfq_type = Rfqtypes::where('delete_status', 'active')->get();
-        $rfq_status = RfqStatuses::where('delete_status', 'active')->get();
+        $rfq_status = Rfqstatuses::where('delete_status', 'active')->get();
         $docs = Documents::where('delete_status', 'active')->get();
         $customer = Customer::select(['name', 'status'])
                                 ->where('status', 'Active')
