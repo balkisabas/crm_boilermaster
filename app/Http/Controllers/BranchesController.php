@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\App;
 use App\Models\Customer;
 use App\Models\Vendor;
-use App\Models\branches;
+use App\Models\Branches;
 use Illuminate\Http\Request;
 
 class BranchesController  extends Controller
@@ -23,7 +23,7 @@ class BranchesController  extends Controller
         $id = $variables[0]; 
         $page_modual = $variables[1];
 
-        $branch =  branches::find($id);
+        $branch =  Branches::find($id);
 
         return  view('branches.show',compact('branch','page_modual'));
     }
