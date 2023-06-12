@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="code" class="form-label">Code <span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="code" name="code" value="{{$rfqstatus->code}}">
+                                    <input type="number" class="form-control" id="code" name="code" value="{{$rfqstatus->code}}">
                                 </div>
                             </div> 
                             <div class="col-md-6">
