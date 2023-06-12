@@ -25,7 +25,7 @@ class CreateAdminUserSeeder extends Seeder
             'phone' => '1234567',
             'position' => 'Operation Manager',
             'company' => 'BOILERMASTER SDN BHD',
-            'status' => 'active',
+            'status' => 'yes',
             'delete_status' => 'Active',
             'zohoemail_code' => '1234',
         ]);

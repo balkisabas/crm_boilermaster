@@ -28,6 +28,6 @@ class Proposal extends Model
 
     public function proposalDoc()
     {
-        return $this->hasMany(ProposalDoc::class, 'rfqid', 'id');
+        return $this->hasMany(ProposalDoc::class, 'rfqid', 'id')->where('status', 'active');;
     }
 }
