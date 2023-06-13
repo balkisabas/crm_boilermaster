@@ -98,7 +98,6 @@
                           
                                 <div class="float-end">
                                     <button type="submit" class="btn btn-success w-md">ADD</button>
-                                    <button type="reset" class="btn btn-danger w-md">Delete</button>
 
                                 </div>
                             </form>

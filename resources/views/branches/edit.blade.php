@@ -100,8 +100,6 @@
                           
                                 <div class="float-end">
                                     <button type="submit" class="btn btn-success w-md">Edit</button>
-                                    <a href={{"\delete-branch/".$branch['id']}} class="btn btn-danger w-md">Delete</a>
-
                                 </div>
 
                                 

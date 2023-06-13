@@ -152,7 +152,7 @@
                                             @else
                                             <tr   style="display: none" class="toggle-row{{  $index }}" >
                                                 <td width=" "><p style="display: none" >{{  $index }}</p></td>
-                                                <td width=" ">Bil</td>
+                                                <td width=" ">No</td>
                                                 <td width=" ">Name</td>
                                                 <td width=" ">Address</td>
                                                 <td width=" ">status</td>                                
