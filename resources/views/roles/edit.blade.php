@@ -61,12 +61,12 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label  class="form-label">Permission <span style="color:red">*</span></label>
-                                    <br>
-                                    <div class="checkbox-list">
-                                    @foreach($permission as $value)
-                                        <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                        {{ $value->name }}</label>
-                                    <br/>
+                                        <br>
+                                        <div class="checkbox-list">
+                                        @foreach($permission as $value)
+                                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                            {{ $value->name }}</label>
+                                        <br/>
                                     @endforeach
                                     </div>
                                 </div>

@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('title','Create Role')
+<style>
+    .checkbox-list {
+        column-count: 5;
+        column-gap: 10px;
+    }
+</style>
 @section('content')
 
 <!-- start page title -->
@@ -48,13 +54,14 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Permission <span style="color:red">*</span></label>
-                                  
-                                    <br/>
-                                    @foreach($permission as $value)
-                                        <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                                        {{ $value->name }}</label>
-                                    <br/>
-                                    @endforeach
+                                    <div class="checkbox-list">
+                                        <br/>
+                                        @foreach($permission as $value)
+                                            <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                                            {{ $value->name }}</label>
+                                        <br/>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
