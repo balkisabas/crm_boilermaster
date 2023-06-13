@@ -6,6 +6,10 @@
     th.widthtable {
         width:280px
         }
+    .checkbox-list {
+    column-count: 3;
+    column-gap: 10px;
+    }
 </style>
 <!-- start page title -->
 <div class="row">
@@ -72,7 +76,7 @@
                         </tr> 
                         <tr>
                             <th class="widthtable">Final Pricing</th>
-                            <td>{{ $rfq->final_pricing }}</td>
+                            <td>RM {{ $rfq->final_pricing }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ status</th>
@@ -88,22 +92,24 @@
                         </tr> 
                         <tr>
                             <th class="widthtable">Award Amount</th>
-                            <td>{{ $rfq->award_amount }}</td>
-                        </tr> 
-                        
-                        <tr><td><strong>Uploaded Document</strong><td></td></td>
-                        </tr>
-                        <tr>
-                        @foreach ($rfq->proposalDoc as $m)
-                            <td><li><strong> Document Name:</strong>  {{ $m->document_name }}</li>
-                            <li><strong> Document Type:</strong>  {{ $m->document_type }}</li>
-                            <li><strong> Document Type:</strong>  {{ $m->created_at->format('d-m-Y') }}</li>
-                            <li><strong> Filename:</strong>  {{ $m->filename }} <a href="{{ asset('/uploads/' . $m['filename']) }}" class="btn btn-info btn-sm"> Download File </a></td></li>
-                        </td>
-                        <td></td>
-                        </tr> 
-                        @endforeach
+                            @if (isset($rfq['award_amount']))  
+                                <td>RM {{ $rfq['award_amount'] }}</td>
+                            @else 
+                                <td>-</td>
+                            @endif
+                        </tr>             
                     </thead>
+                </table>
+                <table class="table">
+                <tr><td><strong>Uploaded Document</strong></td></tr>
+                     @foreach ($rfq->proposalDoc as $m)
+                    <tr>
+                        <td><li><strong> Document Name:</strong>  {{ $m->document_name }}</li>
+                        <li><strong> Document Type:</strong>  {{ $m->document_type }}</li>
+                        <li><strong> Date Created:</strong>  {{ $m->created_at->format('d-m-Y') }}</li>
+                        <li><strong> Filename:</strong>  {{ $m->filename }} <a href="{{ asset('/uploads/' . $m['filename']) }}" class="btn btn-info btn-sm"> Download File </a></td></li>
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
