@@ -125,7 +125,7 @@
                                     <select name="company" id="company" class="form-control">
                                     <option value="">-Please Select company-</option>
                                     @foreach ($company as $k)
-                                    <option value="{{$k->company_name}}" {{$k->name == $k->company? 'selected':''}}>{{$k->company_name}}</option>
+                                    <option value="{{$k->company_name}}" {{$k->company_name == $user->company? 'selected':''}}>{{$k->company_name}}</option>
                                     @endforeach
                                     </select>
                                 </div>

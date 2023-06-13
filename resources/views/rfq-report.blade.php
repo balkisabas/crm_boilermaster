@@ -290,17 +290,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         @if( $selectedOption == 'PIC')
 
                                             @if(isset($datefrom)) 
-                                                <a href=  "{{ route('rfqreport_inprogress_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $b}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_inprogress_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $b}}</a>
                                             @else
-                                                <a href=  "{{ route('rfqreport_inprogress', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $b}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_inprogress', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $b}}</a>
                                             @endif 
 
                                         @else
 
                                             @if(isset($datefrom)) 
-                                                <a href=  "{{ route('rfqreport_inprogress_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $b}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_inprogress_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $b}}</a>
                                             @else
-                                                <a href=  "{{ route('rfqreport_inprogress', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $b}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_inprogress', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $b}}</a>
                                             @endif
 
                                         @endif 
@@ -317,17 +317,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         @if( $selectedOption == 'PIC' )
 
                                             @if(isset($datefrom)) 
-                                                 <a href=  "{{ route('rfqreport_submited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $a}}</a>
+                                                 <a target="_new" href=  "{{ route('rfqreport_submited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $a}}</a>
                                             @else
-                                                 <a href=  "{{ route('rfqreport_submited', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $a}}</a>
+                                                 <a target="_new" href=  "{{ route('rfqreport_submited', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $a}}</a>
                                             @endif 
 
                                         @else
 
                                             @if(isset($datefrom)) 
-                                                 <a href=  "{{ route('rfqreport_submited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $a}}</a>
+                                                 <a target="_new" href=  "{{ route('rfqreport_submited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $a}}</a>
                                             @else
-                                                 <a href=  "{{ route('rfqreport_submited', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $a}}</a>
+                                                 <a target="_new" href=  "{{ route('rfqreport_submited', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $a}}</a>
                                             @endif
 
                                         @endif 
@@ -344,17 +344,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         @if( $selectedOption == 'PIC')
 
                                             @if(isset($datefrom)) 
-                                                <a href=  "{{ route('rfqreport_notsubmited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $c}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_notsubmited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $c}}</a>
                                             @else
-                                                <a href=  "{{ route('rfqreport_notsubmited', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $c}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_notsubmited', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $c}}</a>
                                             @endif 
 
                                         @else
 
                                             @if(isset($datefrom)) 
-                                                <a href=  "{{ route('rfqreport_notsubmited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $c}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_notsubmited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $c}}</a>
                                             @else
-                                                <a href=  "{{ route('rfqreport_notsubmited', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $c}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_notsubmited', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $c}}</a>
                                             @endif
 
                                         @endif 
@@ -369,17 +369,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         @if( $selectedOption == 'PIC')
 
                                             @if(isset($datefrom)) 
-                                                <a href=  "{{ route('rfqreport_awarded_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $d}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_awarded_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $d}}</a>
                                             @else
-                                                <a href=  "{{ route('rfqreport_awarded', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $d}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_awarded', ['name' => $m->pic,'type' => 'pic']) }}"> {{ $d}}</a>
                                             @endif 
 
                                         @else
 
                                             @if(isset($datefrom)) 
-                                                <a href=  "{{ route('rfqreport_awarded_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $d}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_awarded_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto]) }}"> {{ $d}}</a>
                                             @else
-                                                <a href=  "{{ route('rfqreport_awarded', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $d}}</a>
+                                                <a target="_new" href=  "{{ route('rfqreport_awarded', ['name' => $m->cust_name,'type' => 'client']) }}"> {{ $d}}</a>
                                             @endif
 
                                         @endif 
