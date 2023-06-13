@@ -134,7 +134,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="final_pricing" class="form-label">Final Pricing (RM) </label>
-                                    <input type="number" class="form-control" id="final_pricing" name="final_pricing" placeholder="Enter price (e.g., 0.00)">
+                                    <input type="number" step="0.01" min="0"  class="form-control" id="final_pricing" name="final_pricing" placeholder="Enter price (e.g., 0.00)">
                                 </div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="award_amount" class="form-label">Award Amount</label>
-                                    <input type="number" class="form-control" id="award_amount" name="award_amount" placeholder="Enter award amount">
+                                    <input type="number" step="0.01" min="0"  class="form-control" id="award_amount" name="award_amount" placeholder="Enter price (e.g., 0.00)">
                                 </div>  
                             </div> 
                         </div>
