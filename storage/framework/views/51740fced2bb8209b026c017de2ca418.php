@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'BoilerMaster'); ?> 
 
 <?php $__env->startSection('css'); ?>
@@ -30,7 +32,7 @@
                             <a href="" class="auth-logo-light">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title bg-light">
-                                        <img src="<?php echo e(URL::asset ('/build/images/logo.png')); ?>" alt="" width="110" height="85">
+                                        <img src="<?php echo e(URL::asset ('/build/images/logo.PNG')); ?>" alt="" width="110" height="85">
                                     </span>
                                 </div>
                             </a>
@@ -38,7 +40,7 @@
                             <a href="" class="auth-logo-dark">
                                 <div class="avatar-md profile-user-wid mb-4">
                                     <span class="avatar-title  bg-light">
-                                        <img src="<?php echo e(URL::asset ('/build/images/logo.png')); ?>" alt="" width="80" height="70">
+                                        <img src="<?php echo e(URL::asset ('/build/images/logo.PNG')); ?>" alt="" width="80" height="70">
                                     </span>
                                 </div>
                             </a>
@@ -55,7 +57,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('email', 'admin@themesbrand.com')); ?>" id="username" placeholder="Enter Email" autocomplete="email" autofocus>
+unset($__errorArgs, $__bag); ?>" id="username" placeholder="Enter Email" autocomplete="email" autofocus>
                                 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -91,7 +93,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="userpassword" value="123456" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+unset($__errorArgs, $__bag); ?>" id="userpassword" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
                                     <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                     <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -108,17 +110,17 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
+                                <!-- <input class="form-check-input" type="checkbox" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="remember">
                                     Remember me
-                                </label>
+                                </label> -->
                             </div>
                             <div class="mt-3 d-grid">
                                 <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
                             </div>
                         </form>
                         <div class="mt-5 text-center">
-                            <p>Don't have an account ? <a href="<?php echo e(url('register')); ?>" class="fw-medium text-primary"> Signup now </a> </p>
+                            <!-- <p>Don't have an account ? <a href="<?php echo e(url('register')); ?>" class="fw-medium text-primary"> Signup now </a> </p> -->
                             <p>© <script>document.write(new Date().getFullYear())</script> BoilerMaster</p>
                         </div>
                 </div>
