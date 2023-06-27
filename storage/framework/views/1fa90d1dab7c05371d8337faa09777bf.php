@@ -291,17 +291,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         <?php if( $selectedOption == 'PIC'): ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                <a href=  "<?php echo e(route('rfqreport_inprogress_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($b); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_inprogress_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($b); ?></a>
                                             <?php else: ?>
-                                                <a href=  "<?php echo e(route('rfqreport_inprogress', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($b); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_inprogress', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($b); ?></a>
                                             <?php endif; ?> 
 
                                         <?php else: ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                <a href=  "<?php echo e(route('rfqreport_inprogress_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($b); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_inprogress_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($b); ?></a>
                                             <?php else: ?>
-                                                <a href=  "<?php echo e(route('rfqreport_inprogress', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($b); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_inprogress', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($b); ?></a>
                                             <?php endif; ?>
 
                                         <?php endif; ?> 
@@ -318,17 +318,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         <?php if( $selectedOption == 'PIC' ): ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                 <a href=  "<?php echo e(route('rfqreport_submited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($a); ?></a>
+                                                 <a target="_new" href=  "<?php echo e(route('rfqreport_submited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($a); ?></a>
                                             <?php else: ?>
-                                                 <a href=  "<?php echo e(route('rfqreport_submited', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($a); ?></a>
+                                                 <a target="_new" href=  "<?php echo e(route('rfqreport_submited', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($a); ?></a>
                                             <?php endif; ?> 
 
                                         <?php else: ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                 <a href=  "<?php echo e(route('rfqreport_submited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($a); ?></a>
+                                                 <a target="_new" href=  "<?php echo e(route('rfqreport_submited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($a); ?></a>
                                             <?php else: ?>
-                                                 <a href=  "<?php echo e(route('rfqreport_submited', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($a); ?></a>
+                                                 <a target="_new" href=  "<?php echo e(route('rfqreport_submited', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($a); ?></a>
                                             <?php endif; ?>
 
                                         <?php endif; ?> 
@@ -345,17 +345,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         <?php if( $selectedOption == 'PIC'): ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                <a href=  "<?php echo e(route('rfqreport_notsubmited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($c); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_notsubmited_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($c); ?></a>
                                             <?php else: ?>
-                                                <a href=  "<?php echo e(route('rfqreport_notsubmited', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($c); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_notsubmited', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($c); ?></a>
                                             <?php endif; ?> 
 
                                         <?php else: ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                <a href=  "<?php echo e(route('rfqreport_notsubmited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($c); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_notsubmited_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($c); ?></a>
                                             <?php else: ?>
-                                                <a href=  "<?php echo e(route('rfqreport_notsubmited', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($c); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_notsubmited', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($c); ?></a>
                                             <?php endif; ?>
 
                                         <?php endif; ?> 
@@ -370,17 +370,17 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                                         <?php if( $selectedOption == 'PIC'): ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                <a href=  "<?php echo e(route('rfqreport_awarded_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($d); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_awarded_date', ['name' => $m->pic,'type' => 'pic','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($d); ?></a>
                                             <?php else: ?>
-                                                <a href=  "<?php echo e(route('rfqreport_awarded', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($d); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_awarded', ['name' => $m->pic,'type' => 'pic'])); ?>"> <?php echo e($d); ?></a>
                                             <?php endif; ?> 
 
                                         <?php else: ?>
 
                                             <?php if(isset($datefrom)): ?> 
-                                                <a href=  "<?php echo e(route('rfqreport_awarded_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($d); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_awarded_date', ['name' => $m->cust_name,'type' => 'client','date_from' => $datefrom,'date_to' => $dateto])); ?>"> <?php echo e($d); ?></a>
                                             <?php else: ?>
-                                                <a href=  "<?php echo e(route('rfqreport_awarded', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($d); ?></a>
+                                                <a target="_new" href=  "<?php echo e(route('rfqreport_awarded', ['name' => $m->cust_name,'type' => 'client'])); ?>"> <?php echo e($d); ?></a>
                                             <?php endif; ?>
 
                                         <?php endif; ?> 

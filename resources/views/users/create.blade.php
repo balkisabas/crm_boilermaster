@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password <span style="color:red">*</span></label>
+                                    <label for="password" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                     <select name="position" id="position" class="form-control">
                                         <option value="">-Please Select position-</option>
                                         @foreach ($position as $m)
-                                        <option value="{{$m->name}}" {{$m->id == $m->position? 'selected':''}}>{{$m->name}}</option>
+                                        <option value="{{$m->id}}" {{$m->id == $m->position? 'selected':''}}>{{$m->name}}({{$m->id}})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -98,7 +98,7 @@
                                     <select name="company" id="company" class="form-control">
                                     <option value="">-Please Select company-</option>
                                         @foreach ($company as $k)
-                                        <option value="{{$k->company_name}}" {{$k->id == $k->company? 'selected':''}}>{{$k->company_name}}</option>
+                                        <option value="{{$k->id}}" {{$k->id == $k->company? 'selected':''}}>{{$k->company_name}}($k->id)</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -116,11 +116,6 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="code" class="form-label">Zoho email permission code</label>
-                                        <input type="text" class="form-control" id="zohoemail_code" name="zohoemail_code" placeholder="Enter code">
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="radio-container">
                                         <label for="status" class="form-label">Status</label>
@@ -129,6 +124,19 @@
                                         <input type="radio"  name="status"  value="No">No
                                     </div>
                                 </div>
+                                <div class="mb-3" hidden>
+                                    <label for="code" class="form-label">Zoho email permission code</label>
+                                    <input type="text" class="form-control" id="zohoemail_code" name="zohoemail_code" placeholder="Enter code">
+                                </div>
+                                <div class="mb-3" hidden>
+                                <div class="radio-container">
+                                    <label for="status" class="form-label">Account Mail Type</label>
+                                    <br>
+                                    <input type="radio" style="margin-top:10px" name="account" value="zoho">Zoho Mail
+                                    <input type="radio"  name="account"  value="default">Default Mail
+                                </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="float-end">
                             <button type="submit" class="btn btn-success w-md">Save</button>

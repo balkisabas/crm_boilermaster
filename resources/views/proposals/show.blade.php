@@ -6,10 +6,6 @@
     th.widthtable {
         width:280px
         }
-    .checkbox-list {
-    column-count: 3;
-    column-gap: 10px;
-    }
 </style>
 <!-- start page title -->
 <div class="row">
@@ -28,7 +24,15 @@
     </div>
 </div>
 <!-- end page title -->
-
+@php  
+        $company = DB::table('Companies')->where('id', '=', $rfq->company)->first();  
+        $cust = DB::table('Customers')->where('id', '=', $rfq->cust_name)->first();  
+        $pic = DB::table('Users')->where('id', '=', $rfq->pic)->first(); 
+        $cust_pic = DB::table('Personincharges')->where('id', '=', $rfq->cust_pic)->first();
+        $type = DB::table('Rfqtypes')->where('id', '=', $rfq->type)->first();
+        $status = DB::table('Rfqstatuses')->where('id', '=', $rfq->rfq_status)->first();
+         
+@endphp
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -40,23 +44,23 @@
                     <thead>
                         <tr>
                             <th class="widthtable">Name</th>
-                            <td>{{ $rfq->company }}</td>
+                            <td>{{ $company->company_name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">PIC</th>
-                            <td>{{ $rfq->pic }}</td>
+                            <td>{{ $pic->name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Proposal type</th>
-                            <td>{{ $rfq->type }}</td>
+                            <td>{{ $type->name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer</th>
-                            <td>{{ $rfq->cust_name }}</td>
+                            <td>{{ $cust->name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PIC</th>
-                            <td>{{ $rfq->cust_pic }}</td>
+                            <td>{{ $cust_pic->name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer email</th>
@@ -76,11 +80,11 @@
                         </tr> 
                         <tr>
                             <th class="widthtable">Final Pricing</th>
-                            <td>RM {{ $rfq->final_pricing }}</td>
+                            <td>{{ $rfq->final_pricing }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ status</th>
-                            <td>{{ $rfq->rfq_status }}</td>
+                            <td>{{ $status->name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PO No</th>
@@ -92,24 +96,25 @@
                         </tr> 
                         <tr>
                             <th class="widthtable">Award Amount</th>
-                            @if (isset($rfq['award_amount']))  
-                                <td>RM {{ $rfq['award_amount'] }}</td>
-                            @else 
-                                <td>-</td>
-                            @endif
-                        </tr>             
+                            <td>{{ $rfq->award_amount }}</td>
+                        </tr> 
+                        
+                        <tr><td><strong>Uploaded Document</strong><td></td></td>
+                        </tr>
+                        <tr>
+                        @foreach ($rfq->proposalDoc as $m)
+                        
+                        @php $doc = DB::table('Documents')->where('id', '=', $m->document_type)->first(); @endphp
+
+                            <td><li><strong> Document Name:</strong>  {{ $m->document_name }}</li>
+                            <li><strong> Document Type:</strong>  {{ $doc->name }}</li>
+                            <li><strong> Document Type:</strong>  {{ $m->created_at->format('d-m-Y') }}</li>
+                            <li><strong> Filename:</strong>  {{ $m->filename }} <a href="{{ asset('/uploads/' . $m['filename']) }}" class="btn btn-info btn-sm"> Download File </a></td></li>
+                        </td>
+                        <td></td>
+                        </tr> 
+                        @endforeach
                     </thead>
-                </table>
-                <table class="table">
-                <tr><td><strong>Uploaded Document</strong></td></tr>
-                     @foreach ($rfq->proposalDoc as $m)
-                    <tr>
-                        <td><li><strong> Document Name:</strong>  {{ $m->document_name }}</li>
-                        <li><strong> Document Type:</strong>  {{ $m->document_type }}</li>
-                        <li><strong> Date Created:</strong>  {{ $m->created_at->format('d-m-Y') }}</li>
-                        <li><strong> Filename:</strong>  {{ $m->filename }} <a href="{{ asset('/uploads/' . $m['filename']) }}" class="btn btn-info btn-sm"> Download File </a></td></li>
-                    </tr>
-                    @endforeach
                 </table>
             </div>
         </div>

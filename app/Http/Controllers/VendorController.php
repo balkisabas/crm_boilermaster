@@ -232,7 +232,8 @@ class VendorController  extends Controller
         $userupdate->save();
        
         Personincharge::where('fk', $id)
-                        ->update(['Active_status' => 'delete', 'status' => 'delete']);
+                        ->where('assign', 'vendor')
+                        ->update(['Active_status' => 'delete', 'status' => 'delete' ]);
         return redirect()->route('vendors.index')->with('success','Vendor Deleted Successfully.');
     }
 

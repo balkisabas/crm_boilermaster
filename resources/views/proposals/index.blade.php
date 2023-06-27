@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Proposal Lists</h4>
+            <h4 class="mb-sm-0 font-size-18">Proposal Lists  </h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -60,13 +60,20 @@
                             @else
                             @foreach ($rfq as $m)
                             <td>{{$i++}}</td>
-                            <td>{{ $m->company}}</td>
-                            <td>{{ $m->cust_name}}</td>
-                            <td>{{ $m->pic}}</td>
+                            
+                            @php  $company = DB::table('Companies')->where('id', '=', $m->company)->first();  @endphp
+                                        <td>{{ $company->company_name}}</td>
+                            @php  $cust = DB::table('Customers')->where('id', '=', $m->cust_name)->first();  @endphp
+                                        <td>{{ $cust->name}}</td>
+                            @php  $pic = DB::table('Users')->where('id', '=', $m->pic)->first();  @endphp
+                                        <td>{{ $pic->name}}</td>
+                                        
                             <td>{{ $m->final_pricing}}</td>
                             <td>{{ $m->rfq_no}}</td>
                             <td>{{$duedate = date("d-m-Y", strtotime($m->due_date))}}</td>
-                            <td>{{ $m->rfq_status}}</td>
+                            
+                            @php  $status = DB::table('Rfqstatuses')->where('id', '=', $m->rfq_status)->first();  @endphp
+                                        <td>{{ $status->name}}</td>
                             <td>
                                  <a href="{{ route('proposals.show',$m->id) }}"><i class="bx bx-search-alt" title="View Details Companies" style="color:black"></i></a>
                                 @can('edit-proposal')

@@ -24,7 +24,8 @@
     </div>
 </div>
 <!-- end page title -->
-
+@php  $company = DB::table('Companies')->where('id', '=', $user->company)->first();  @endphp 
+@php  $positions = DB::table('positions')->where('id', '=', $user->position)->first();  @endphp 
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -50,11 +51,11 @@
                         </tr> 
                         <tr>
                             <th class="widthtable">Position</th>
-                            <td>{{ $user->position}}</td>
+                            <td>{{ $positions->name }}</td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Company</th>
-                            <td>{{ $user->company}}</td>
+                            <td>{{ $company->company_name}}</td>
                         </tr>
                         <tr>
                             <th class="widthtable">Active</th>
@@ -64,10 +65,6 @@
                                 <span class="badge bg-danger fs-6">{{ $user->status}}</span>
                                 @endif
                             </td>
-                        </tr>
-                        <tr>
-                            <th class="widthtable">Zoho email permission code</th>
-                            <td>{{ $user->zohoemail_code}}</td>
                         </tr>
                     </thead>
                 </table>

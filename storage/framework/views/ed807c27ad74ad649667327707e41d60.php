@@ -117,7 +117,7 @@
                                     <select name="position" id="position" class="form-control">
                                         <option value="">-Please Select position-</option>
                                         <?php $__currentLoopData = $position; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($m->name); ?>" <?php echo e($m->name == $user->position ? 'selected':''); ?>><?php echo e($m->name); ?></option>
+                                        <option value="<?php echo e($m->id); ?>" <?php echo e($m->id == $user->position ? 'selected':''); ?>><?php echo e($m->name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
@@ -130,7 +130,7 @@
                                     <select name="company" id="company" class="form-control">
                                     <option value="">-Please Select company-</option>
                                     <?php $__currentLoopData = $company; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($k->company_name); ?>" <?php echo e($k->name == $k->company? 'selected':''); ?>><?php echo e($k->company_name); ?></option>
+                                    <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $user->company? 'selected':''); ?>><?php echo e($k->company_name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>

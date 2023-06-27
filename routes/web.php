@@ -14,6 +14,9 @@ use App\Http\Controllers\CustomersController;
 use App\http\Controllers\BranchesController;
 use App\http\Controllers\VendorController;
 use App\http\Controllers\DashboardController; 
+use App\http\Controllers\ZohoLoginController; 
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +28,16 @@ use App\http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Auth::routes(); is for login, register page....
 Auth::routes();
+
+Route::get('/zoho-login', [App\Http\Controllers\ZohoLoginController::class, 'index'])->name('zoho-login');
+Route::post('/zoho-login', [App\Http\Controllers\ZohoLoginController::class, 'login'])->name('zohologin');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 Route::get('index', [App\Http\Controllers\HomeController::class, 'root'])->name('index');
+Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
+
 
 //Update User Details
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
@@ -38,7 +46,7 @@ Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['web']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('companies', CompaniesController::class);
     Route::resource('documents', DocumentsController::class);
@@ -73,3 +81,9 @@ Route::get('proposal-list-awarded/{name}/{type}/{date_from}/{date_to}', [App\Htt
 Route::get('proposal-report', [App\Http\Controllers\ProposalController::class, 'rfq_report'])->name('rfqreport')->middleware('permission:view_proposalreport');
 Route::get('proposal-report-filter', [App\Http\Controllers\ProposalController::class, 'rfq_report_filter'])->name('rfqreportfilter');
 Route::get('proposal-list', [App\Http\Controllers\ProposalController::class, 'senaraiRfq'])->name('proposal-list');
+
+
+Route::get('/audits', [App\Http\Controllers\AuditController::class, 'index'])->name('audits.index');
+
+Route::get('fetchData/{id}', [App\Http\Controllers\ProposalController::class, 'fetchData']);
+Route::get('fetchDatapiccompny/{id}', [App\Http\Controllers\ProposalController::class, 'fetchDatapiccompny']);

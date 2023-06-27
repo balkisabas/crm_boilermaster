@@ -1,8 +1,6 @@
  
+<?php $__env->startSection('title','Create Branch'); ?>
 <?php $__env->startSection('content'); ?>
- 
- 
-      
            <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -100,7 +98,6 @@
                           
                                 <div class="float-end">
                                     <button type="submit" class="btn btn-success w-md">ADD</button>
-                                    <button type="reset" class="btn btn-danger w-md">Delete</button>
 
                                 </div>
                             </form>

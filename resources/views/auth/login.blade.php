@@ -58,7 +58,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <div class="float-end">
+                                <div class="float-end" hidden>
                                     @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a>
                                     @endif
@@ -74,20 +74,21 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-check">
+                            <div class="form-check" hidden>
                                 <input class="form-check-input" type="checkbox" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">
                                     Remember me
                                 </label>
                             </div>
+                            <br>
                             <div class="mt-3 d-grid">
                                 <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
+                                <div class="mt-5 text-center">
+                                    <p>Or <a href="{{route('zoho-login')}}">Login with Zoho Mail</a></p>
+                                    <p>© <script>document.write(new Date().getFullYear())</script> BoilerMaster</p>
+                                </div>
                             </div>
                         </form>
-                        <div class="mt-5 text-center">
-                            <!-- <p>Don't have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary"> Signup now </a> </p> -->
-                            <p>© <script>document.write(new Date().getFullYear())</script> BoilerMaster</p>
-                        </div>
                 </div>
             </div>
         </div>

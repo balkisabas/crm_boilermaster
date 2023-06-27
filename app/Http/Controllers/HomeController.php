@@ -123,4 +123,12 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        // Redirect the user to the desired page after logout
+        return redirect()->route('zoho-login');
+    }
 }

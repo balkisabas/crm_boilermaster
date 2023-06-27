@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password <span style="color:red">*</span></label>
+                                    <label for="password" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                     <select name="position" id="position" class="form-control">
                                         <option value="">-Please Select position-</option>
                                         <?php $__currentLoopData = $position; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($m->name); ?>" <?php echo e($m->id == $m->position? 'selected':''); ?>><?php echo e($m->name); ?></option>
+                                        <option value="<?php echo e($m->id); ?>" <?php echo e($m->id == $m->position? 'selected':''); ?>><?php echo e($m->name); ?>(<?php echo e($m->id); ?>)</option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
@@ -99,7 +99,7 @@
                                     <select name="company" id="company" class="form-control">
                                     <option value="">-Please Select company-</option>
                                         <?php $__currentLoopData = $company; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($k->company_name); ?>" <?php echo e($k->id == $k->company? 'selected':''); ?>><?php echo e($k->company_name); ?></option>
+                                        <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $k->company? 'selected':''); ?>><?php echo e($k->company_name); ?>($k->id)</option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
@@ -117,11 +117,6 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="code" class="form-label">Zoho email permission code</label>
-                                        <input type="text" class="form-control" id="zohoemail_code" name="zohoemail_code" placeholder="Enter code">
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="radio-container">
                                         <label for="status" class="form-label">Status</label>
@@ -130,6 +125,19 @@
                                         <input type="radio"  name="status"  value="No">No
                                     </div>
                                 </div>
+                                <div class="mb-3" hidden>
+                                    <label for="code" class="form-label">Zoho email permission code</label>
+                                    <input type="text" class="form-control" id="zohoemail_code" name="zohoemail_code" placeholder="Enter code">
+                                </div>
+                                <div class="mb-3" hidden>
+                                <div class="radio-container">
+                                    <label for="status" class="form-label">Account Mail Type</label>
+                                    <br>
+                                    <input type="radio" style="margin-top:10px" name="account" value="zoho">Zoho Mail
+                                    <input type="radio"  name="account"  value="default">Default Mail
+                                </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="float-end">
                             <button type="submit" class="btn btn-success w-md">Save</button>

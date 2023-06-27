@@ -21,6 +21,7 @@
                 <li><a href="<?php echo e(route('rfqtypes.index')); ?>"><i class="bx bxs-file"></i><span key="t-layouts">RFQ Type</span></a>
                 </li><li><a href="<?php echo e(route('rfqstatus.index')); ?>"><i class="bx bx-list-check"></i><span key="t-layouts">RFQ Status</span></a></li>
                 <li><a href="<?php echo e(route('users.index')); ?>"><i class="bx bx-user"></i><span key="t-layouts">User</span> </a></li>
+                <li><a href="<?php echo e(route('audits.index')); ?>"><i class="bx bx-user"></i><span key="t-layouts">Audit Trail</span> </a></li>
             </ul>
         </div>
         <!-- Sidebar -->

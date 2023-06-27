@@ -90,7 +90,7 @@
                                             <select id="pic" name="pic" class="form-control">
                                             <option value="">-Please Select PIC-</option>
                                             @foreach ($picUser as $p)
-                                                <option value="{{$p->name}}" {{$p->name == $vendor->pic? 'selected':''}}>{{$p->name}}</option>
+                                                <option value="{{$p->id}}" {{$p->id == $vendor->pic? 'selected':''}}>{{$p->name}}</option>
                                             @endforeach
                                             </select>
                                         </div>

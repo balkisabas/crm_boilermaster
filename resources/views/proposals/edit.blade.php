@@ -51,7 +51,7 @@
                                 <select id="company" name="company" class="form-control">
                                 <option value="">-Please Select Company-</option>
                                 @foreach ($company as $k)
-                                    <option value="{{$k->company_name}}" {{$k->company_name == $proposal->company? 'selected':''}}>{{$k->company_name}}</option>
+                                    <option value="{{$k->id}}" {{$k->id == $proposal->company? 'selected':''}}>{{$k->company_name}}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -62,7 +62,7 @@
                                 <select id="pic" name="pic" class="form-control">
                                     <option value="">-Please Select PIC-</option>
                                     @foreach ($picUser as $p)
-                                        <option value="{{$p->name}}" {{$p->name == $proposal->pic? 'selected':''}}>{{$p->name}}</option>
+                                        <option value="{{$p->id}}" {{$p->id == $proposal->pic? 'selected':''}}>{{$p->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -75,7 +75,7 @@
                                 <select id="type" name="type" class="form-control">
                                 <option value="">-Please Select Type-</option>
                                 @foreach ($rfq_type as $m)
-                                    <option value="{{$m->name}}" {{$m->name == $proposal->type? 'selected':''}}>{{$m->name}}</option>
+                                    <option value="{{$m->id}}" {{$m->id == $proposal->type? 'selected':''}}> {{$m->name}} </option>
                                 @endforeach
                                 </select>
                             </div>
@@ -86,7 +86,7 @@
                                 <select id="cust_name" name="cust_name" class="form-control">
                                 <option value="">-Please Select Customer-</option>
                                 @foreach ($customer as $cust)
-                                    <option value="{{$cust->name}}" {{$cust->name == $proposal->cust_name? 'selected':''}}>{{$cust->name}}</option>
+                                    <option value="{{$cust->id}}" {{$cust->id == $proposal->cust_name? 'selected':''}}>{{$cust->name}}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -95,11 +95,11 @@
                     <div class="row">   
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cust_pic" class="form-label">Customer PIC</label>
+                                <label for="cust_pic" class="form-label">Customer PIC {{$proposal->cust_pic}} </label>
                                 <select id="cust_pic" name="cust_pic" class="form-control">
                                     <option value="">-Please Select PIC-</option>
                                     @foreach ($pic as $pic)
-                                        <option value="{{$pic->name}}" {{$pic->name == $proposal->cust_pic? 'selected':''}}>{{$pic->name}}</option>
+                                        <option value="{{$pic->id}}" {{$pic->id == $proposal->cust_pic? 'selected':''}}>{{$pic->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -146,7 +146,7 @@
                                 <select id="rfq_status" name="rfq_status" class="form-control">
                                 <option value="">-Please Select Status-</option>
                                 @foreach ($rfq_status as $n)
-                                    <option value="{{$n->name}}" {{$n->name == $proposal->rfq_status? 'selected':''}}>{{$n->name}}</option>
+                                    <option value="{{$n->id}}" {{$n->id == $proposal->rfq_status? 'selected':''}}>{{$n->name}}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -175,54 +175,88 @@
                     </div>
                     <hr style="  border: none;  height: 1px; background-color: black;">
                     <div id="textFieldsContainer">
-                    @foreach($proposalDoc as $doc)
-                        <div class="row">
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="document_name">Document Name</label>
-                                    <input type="text" class="form-control" id="document_name"  name="data1[]" value="{{$doc->document_name}}">
-                                    <input type="hidden" class="form-control" id="doc_id" name="data3[]" value="{{ $doc->id}}">
-                                </div>
-                            </div> 
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                <label for="document_type" class="form-label">Documents Type</label>
-                                    <select id="document_type" name="data2[]" class="form-control">
-                                        <option value="">-Please Select Document Type-</option>
-                                        @foreach ($docs as $k)
-                                            <option value="{{$k->name}}" {{$k->name == $doc->document_type? 'selected':''}}>{{$k->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>  
-                            </div> 
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="files" class="form-label">Filename</label>
-                                    <input type="text" id="files" name="filename[]" class="form-control" value="{{$doc->filename}}">
-                                </div> 
-                            </div>
-                            <div class="col-md-2">
-                                <div class="mb-2">
-                                    <label for="" class="form-label">&nbsp;&nbsp;</label>
-                                    <input type="file" id="files" name="files[]" class="form-control">
-                                </div> 
-                            </div>
-                            @php 
-                                $count = $loop->index + 1
-                                @endphp
+                        
+                       @if( $proposalDoc->isEmpty())
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                        <label for="document_name">Document Name hello</label>
+                                            <input type="text" class="form-control" id="document_name"  name="data1[]" placeholder="Enter document name">
+                                            <input type="hidden" class="form-control" id="doc_id" name="data3[]" value="new">
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                        <label for="document_type" class="form-label">Documents Type<span style="color:red">*</span></label>
+                                            <select id="document_type" name="data2[]" class="form-control">
+                                                <option value="">-Please Select Document Type-</option>
+                                                @foreach ($docs as $k)
+                                                    <option value="{{$k->name}}" {{$k->id == $k->name? 'selected':''}}>{{$k->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>  
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label for="files" class="form-label">File <span style="color:red">*</span></label>
+                                            <input type="file" id="files" name="files[]" class="form-control"  >
+                                        </div> 
+                                    </div> 
 
-                                @if ( $count  > 1)
-                                    <div class="col-sm-1">
-                                    <a href="{{ route('delete_doc', ['id' => $doc->id, 'rfqid' => $proposal->id]) }}" onclick="return confirm('Are you sure you want to delete  ?')" class="btn btn-warning w-md  col-sm-1 removeTextField" style="margin-top: 27px;"> Remove </a> 
-                                    </div>
-                                @else
                                     <div class="col-sm-1">
                                         <button type="button" name="tmb" id="addTextField" class="btn btn-success w-md" style="margin-top: 27px;">Add</button>
                                     </div>
+                                    
+                                </div>
+                          
+                        @else
+      
+                                @foreach($proposalDoc as $doc)
+                                <div class="row">
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label for="document_name">Document Name  </label>
+                                            <input type="text" class="form-control" id="document_name"  name="data1[]" value="{{$doc->document_name}}">
+                                            <input type="hidden" class="form-control" id="doc_id" name="data3[]" value="{{ $doc->id}}">
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                        <label for="document_type" class="form-label">Documents Type</label>
+                                            <select id="document_type" name="data2[]" class="form-control">
+                                                <option value="">-Please Select Document Type-</option>
+                                                @foreach ($docs as $k)
+                                                    <option value="{{$k->id}}" {{$k->id == $doc->document_type? 'selected':''}}>{{$k->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>  
+                                    </div> 
+                                    <div class="col-md-2">
+                                        <div class="mb-3">
+                                            <label for="files" class="form-label">Filename</label>
+                                            <input type="text" id="files" name="filename[]" class="form-control" value="{{$doc->filename}}">
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="mb-2">
+                                            <label for="" class="form-label">&nbsp;&nbsp;</label>
+                                            <input type="file" id="files" name="files[]" class="form-control">
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="col-sm-1">
+                                        <a href="{{ route('delete_doc', ['id' => $doc->id, 'rfqid' => $proposal->id]) }}" onclick="return confirm('Are you sure you want to delete  ?')" class="btn btn-warning w-md  col-sm-1 removeTextField" style="margin-top: 27px;"> Remove </a> 
+                                    </div>
+                                    @if( $loop->index == 0)
+                                    <div class="col-sm-1">
+                                        <button type="button" name="tmb" id="addTextField" class="btn btn-success w-md" style="margin-top: 27px;">Add</button>
+                                    </div>
+                                    @endif
+                                    
+                                </div>
+                            @endforeach
 
-                                @endif
-                        </div>
-                    @endforeach
+                        @endif
                     </div>
                     <br><br>  
                     <div class="float-end">
@@ -258,7 +292,7 @@ $(document).ready(function() {
                                             <select id="document_type" name="data2[]" class="form-control">
                                                 <option value="">-Please Select Document Type-</option>
                                                 @foreach ($docs as $k)
-                                                    <option value="{{$k->name}}" {{$k->id == $k->name? 'selected':''}}>{{$k->name}}</option>
+                                                    <option value="{{$k->id}}" {{$k->id == $k->name? 'selected':''}}>{{$k->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>  
@@ -266,7 +300,7 @@ $(document).ready(function() {
                                     <div class="col-md-3">
                                         <div class="mb-3">
                                             <label for="files" class="form-label">File <span style="color:red">*</span></label>
-                                            <input type="file" id="files" name="files[]" class="form-control" required>
+                                            <input type="file" id="files" name="files[]" class="form-control"  >
                                         </div> 
                                     </div> 
                                     <div class="col-sm-1">
@@ -284,5 +318,82 @@ $(document).ready(function() {
         grandParentDiv.remove();
         });
     });
+
+    $('#cust_name').change(function(){
+            var id = $(this).val();
+            alert(id); 
+            var cust_pic = document.getElementById('cust_pic'); 
+            $('#cust_pic').find('option').not(':first').remove();
+           
+            $.ajax({ 
+                url: "{{ url('fetchData') }}/"+id,
+                type: 'GET',
+                datatype: 'json',
+                
+                success: function(response){
+                     
+                    console.log(response );
+
+                    while (cust_pic.options.length > 0) {
+                        cust_pic.options[cust_pic   .options.length - 1].remove();
+                    } 
+
+                    if(  response.length == 0 ){
+                        cust_pic.disabled = false;
+                        var option = "<option value='nopiccust'>No PIC In Customer  </option>"; 
+                        $("#cust_pic").append(option);
+                    }else{
+                        cust_pic.disabled = false;
+                        $("#cust_pic option[value='nopic']").remove();
+                        response.forEach(function(item) {
+                        console.log(item.name);
+                        var option = "<option value='"+item.id+"'>"+item.name+"</option>"; 
+                        $("#cust_pic").append(option); 
+                        });
+                    }
+                    
+                }
+                
+            });
+        });
+
+        $('#company').change(function(){
+            var id = $(this).val();
+           // alert(id); 
+            var pic = document.getElementById('pic'); 
+            $('#pic').find('option').not(':first').remove();
+           
+            $.ajax({ 
+                url: "{{ url('fetchDatapiccompny') }}/"+id,
+                type: 'GET',
+                datatype: 'json',
+                
+                success: function(response){
+                     
+                    console.log(response.length);
+                    
+                    while (pic.options.length > 0) {
+                        pic.options[pic.options.length - 1].remove();
+                    }
+
+                    if(  response.length == 0 ){
+                        pic.disabled = false;
+                        var option = "<option value='nopic'>No PIC In Selected Company </option>"; 
+                        $("#pic").append(option);
+                    }else{
+                        pic.disabled = false;
+                         
+                        response.forEach(function(item) {
+                        console.log(item.name);
+                        var option = "<option value='"+item.id+"'>"+item.name+"</option>"; 
+                        $("#pic").append(option); 
+                        });
+                    }
+
+                     
+                }
+                
+            });
+        });
 </script>
 @endsection

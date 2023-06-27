@@ -24,7 +24,15 @@
     </div>
 </div>
 <!-- end page title -->
-
+<?php  
+        $company = DB::table('Companies')->where('id', '=', $rfq->company)->first();  
+        $cust = DB::table('Customers')->where('id', '=', $rfq->cust_name)->first();  
+        $pic = DB::table('Users')->where('id', '=', $rfq->pic)->first(); 
+        $cust_pic = DB::table('Personincharges')->where('id', '=', $rfq->cust_pic)->first();
+        $type = DB::table('Rfqtypes')->where('id', '=', $rfq->type)->first();
+        $status = DB::table('Rfqstatuses')->where('id', '=', $rfq->rfq_status)->first();
+         
+?>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -36,23 +44,23 @@
                     <thead>
                         <tr>
                             <th class="widthtable">Name</th>
-                            <td><?php echo e($rfq->company); ?></td>
+                            <td><?php echo e($company->company_name); ?></td>
                         </tr> 
                         <tr>
                             <th class="widthtable">PIC</th>
-                            <td><?php echo e($rfq->pic); ?></td>
+                            <td><?php echo e($pic->name); ?></td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Proposal type</th>
-                            <td><?php echo e($rfq->type); ?></td>
+                            <td><?php echo e($type->name); ?></td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer</th>
-                            <td><?php echo e($rfq->cust_name); ?></td>
+                            <td><?php echo e($cust->name); ?></td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PIC</th>
-                            <td><?php echo e($rfq->cust_pic); ?></td>
+                            <td><?php echo e($cust_pic->name); ?></td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer email</th>
@@ -76,7 +84,7 @@
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ status</th>
-                            <td><?php echo e($rfq->rfq_status); ?></td>
+                            <td><?php echo e($status->name); ?></td>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PO No</th>
@@ -95,8 +103,11 @@
                         </tr>
                         <tr>
                         <?php $__currentLoopData = $rfq->proposalDoc; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        
+                        <?php $doc = DB::table('Documents')->where('id', '=', $m->document_type)->first(); ?>
+
                             <td><li><strong> Document Name:</strong>  <?php echo e($m->document_name); ?></li>
-                            <li><strong> Document Type:</strong>  <?php echo e($m->document_type); ?></li>
+                            <li><strong> Document Type:</strong>  <?php echo e($doc->name); ?></li>
                             <li><strong> Document Type:</strong>  <?php echo e($m->created_at->format('d-m-Y')); ?></li>
                             <li><strong> Filename:</strong>  <?php echo e($m->filename); ?> <a href="<?php echo e(asset('/uploads/' . $m['filename'])); ?>" class="btn btn-info btn-sm"> Download File </a></td></li>
                         </td>

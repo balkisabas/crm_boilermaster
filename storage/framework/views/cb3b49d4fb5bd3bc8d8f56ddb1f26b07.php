@@ -62,8 +62,10 @@
                                 <td><?php echo e($i++); ?></td>
                                 <td><?php echo e($user->name); ?></td>
                                 <td><?php echo e($user->email); ?></td>
-                                <td><?php echo e($user->company); ?></td>
-                                <td><?php echo e($user->position); ?></td>
+                                <?php  $company = DB::table('Companies')->where('id', '=', $user->company)->first();  ?>
+                                <td><?php echo e($company->company_name); ?></td>
+                                <?php  $positions = DB::table('positions')->where('id', '=', $user->position)->first();  ?>
+                                <td><?php echo e($positions->name); ?></td>
                                 <td> 
                                     <?php if(!empty($user->getRoleNames())): ?>
                                         <?php $__currentLoopData = $user->getRoleNames(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

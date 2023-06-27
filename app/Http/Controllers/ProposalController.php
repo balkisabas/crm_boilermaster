@@ -25,11 +25,20 @@ class ProposalController extends Controller
          $this->middleware('permission:view_proposalreport', ['only' => ['rfq_report']]);
 
     }
+    public function fetchData($id)
+    {
+        $data = Personincharge::where('fk', $id)->where('active_status', 'active')->where('assign', 'customer')->get();
+        return response()->json($data);
+    }
+    public function fetchDatapiccompny($id)
+    {
+        $data = User::where('company', $id)->where('delete_status', 'active')->get();
+        return response()->json($data);
+    }
 
     public function index()
     {
-        $rfq = Proposal::where('delete_status', 'active')
-                        ->where('company', Auth::user()->company)
+        $rfq = Proposal::where('delete_status', 'active') 
                         ->get();
         
         return view('proposals.index', compact('rfq'));
@@ -46,8 +55,7 @@ class ProposalController extends Controller
                                 ->where('status', 'Active')
                                 ->where('assign', 'customer')
                                 ->get();
-        $customer = Customer::select(['name'])
-                                ->where('assign', 'customer')
+        $customer = Customer::where('assign', 'customer')
                                 ->where('active_status', 'Active')
                                 ->get();
         $picUser = User::where('delete_status', 'active')->get();
@@ -62,10 +70,12 @@ class ProposalController extends Controller
             'pic' => 'required',
             'type' => 'required',
             'cust_name' => 'required',
-            'files' => 'required'
+           
         ]);
     
-        //dd($request);
+     
+        $customer = Customer::find($request->cust_name); 
+        
         $proposal = new Proposal();
         $proposal->company = $request->company;
         $proposal->pic = $request->pic;
@@ -83,32 +93,41 @@ class ProposalController extends Controller
         $proposal->award_amount = $request->award_amount;
         $proposal->delete_status = 'Active';
         $proposal->save();
+        
 
+        
         $field1Data = $request->input('data1');
         $field2Data = $request->input('data2');
         $files = $request->file('files');
 
-        foreach ($field1Data as $key => $field1Value) {
+        if(isset($files)){
+           
+                foreach ($field1Data as $key => $field1Value) {
+                        
+                    $field2Value = $field2Data[$key];
                 
-            $field2Value = $field2Data[$key];
-        
-            $file = $files[$key];
+                    $file = $files[$key];
 
-            if ($file->isValid()) {
-                
-                $name = $file->getClientOriginalName();
-                $folder = 'uploads';
-                $path = $file->move($folder,$name);
+                    if ($file->isValid()) {
+                        
+                        $name = $file->getClientOriginalName();
+                        $folder = 'uploads';
+                        $path = $file->move($folder,$name);
 
-                $proposal_docs = new ProposalDoc();
-                $proposal_docs->rfqid = $proposal->id;
-                $proposal_docs->document_name = $field1Value;
-                $proposal_docs->document_type = $field2Value;
-                $proposal_docs->filename =  $name;
-                $proposal_docs->status = 'Active';
-                $proposal_docs->save();  
-            }
+                        $proposal_docs = new ProposalDoc();
+                        $proposal_docs->rfqid = $proposal->id;
+                        $proposal_docs->document_name = $field1Value;
+                        $proposal_docs->document_type = $field2Value;
+                        $proposal_docs->filename =  $name;
+                        $proposal_docs->status = 'Active';
+                        $proposal_docs->save();  
+                    }
+                }
+        }else{
+            
         }
+
+
         return redirect()->route('proposals.index')
                         ->with('success','Document created successfully.');
     }
@@ -127,16 +146,22 @@ class ProposalController extends Controller
         $rfq_type = Rfqtypes::where('delete_status', 'active')->get();
         $rfq_status = Rfqstatuses::where('delete_status', 'active')->get();
         $docs = Documents::where('delete_status', 'active')->get();
-        $customer = Customer::select(['name', 'status'])
-                                ->where('status', 'Active')
+        $customer = Customer::select(['name', 'status', 'id'])
+                                ->where('Active_status', 'Active')
                                 ->get();
-        $pic = Personincharge::select(['name'])
-                                ->where('status', 'Active')
+
+        $pic = Personincharge::select(['name','id'])
+                                ->where('fk',  $proposal->cust_name)
+                                ->where('assign', '=', 'customer' )
+                                ->where('active_status', '=', 'Active' )
                                 ->get();
+        
         $proposalDoc = ProposalDoc::where('rfqid', '=', $proposal->id)
                                         ->where('status', 'active')
                                         ->get();
-        $picUser = User::where('delete_status', 'active')->get();
+          
+
+        $picUser = User::where('delete_status', 'active')->where('company',  $proposal->company)->get();
         //dd($proposalDoc);
         return view('proposals.edit', compact('company', 'rfq_type','rfq_status', 'docs', 'customer' , 'pic', 'proposal', 'proposalDoc', 'picUser'));
     }
@@ -152,9 +177,13 @@ class ProposalController extends Controller
         ]);
         
        //dd($request);
+        
+
+
         $proposal = Proposal::find($id);
         $proposal->company = $request->input('company');
         $proposal->pic = $request->input('pic');
+        $proposal->type = $request->input('type');
         $proposal->cust_name = $request->input('cust_name');
         $proposal->cust_pic = $request->input('cust_pic');
         $proposal->cust_email = $request->input('cust_email');
@@ -169,61 +198,72 @@ class ProposalController extends Controller
         $proposal->delete_status = 'Active';
         $proposal->save();
 
+         
+
         $field1Data = $request->input('data1');
         $field2Data = $request->input('data2');
         $files = $request->file('files');
         $fieldidData = $request->input('data3');
-        //dd($files);
+         
         foreach ($field1Data as $key => $field1Value) {
                 
-            $field2Value = $field2Data[$key];
-            $fieldidValue = $fieldidData[$key];
-            if(isset($files[$key])){
-                $file = $files[$key];
-            }
-            else{
-                $file = 'nofile';
-            }
-            if ($fieldidValue === 'new') {
+                $field2Value = $field2Data[$key];
+                $fieldidValue = $fieldidData[$key];
+
+                if(isset($files[$key])){
+                    $file = $files[$key];
+                }
+                else if(empty($field1Value) && empty($field2Value)) {
+                    $file = 'oi';
+                    
+                }else{
+                    $file = 'nofile';
+                }
+
+                if ($fieldidValue === 'new' && $file != 'oi') {
+                            
+                            $name = $file->getClientOriginalName();
+                            $folder = 'uploads';
+                            $path = $file->move($folder,$name);
+            
+                            $proposal_docs = new ProposalDoc();
+                            $proposal_docs->rfqid = $proposal->id;
+                            $proposal_docs->document_name = $field1Value;
+                            $proposal_docs->document_type = $field2Value;
+                            $proposal_docs->filename =  $name;
+                            $proposal_docs->status = 'Active';
+                            $proposal_docs->save();  
+              
+                }else if($file === 'nofile') {
+                        
+                    ProposalDoc::find($fieldidValue);
+                        $proposal_docs = ProposalDoc::find($fieldidValue);
+                        $proposal_docs->rfqid = $proposal->id;
+                        $proposal_docs->document_name = $field1Value;
+                        $proposal_docs->document_type = $field2Value;
+                        $proposal_docs->status = 'Active';
+                        $proposal_docs->save();  
+                }else if ($file != 'oi'){
+                        ProposalDoc::find($fieldidValue);
+                            
                         $name = $file->getClientOriginalName();
                         $folder = 'uploads';
                         $path = $file->move($folder,$name);
         
-                        $proposal_docs = new ProposalDoc();
+                        $proposal_docs = ProposalDoc::find($fieldidValue);
                         $proposal_docs->rfqid = $proposal->id;
                         $proposal_docs->document_name = $field1Value;
                         $proposal_docs->document_type = $field2Value;
                         $proposal_docs->filename =  $name;
                         $proposal_docs->status = 'Active';
                         $proposal_docs->save();  
-              
-            }else{
-                if($file === 'nofile'){    
-                  ProposalDoc::find($fieldidValue);
-                    $proposal_docs = ProposalDoc::find($fieldidValue);
-                    $proposal_docs->rfqid = $proposal->id;
-                    $proposal_docs->document_name = $field1Value;
-                    $proposal_docs->document_type = $field2Value;
-                    $proposal_docs->status = 'Active';
-                    $proposal_docs->save();  
-                 }else{
-                    ProposalDoc::find($fieldidValue);
-                        
-                    $name = $file->getClientOriginalName();
-                    $folder = 'uploads';
-                    $path = $file->move($folder,$name);
-    
-                    $proposal_docs = ProposalDoc::find($fieldidValue);
-                    $proposal_docs->rfqid = $proposal->id;
-                    $proposal_docs->document_name = $field1Value;
-                    $proposal_docs->document_type = $field2Value;
-                    $proposal_docs->filename =  $name;
-                    $proposal_docs->status = 'Active';
-                    $proposal_docs->save();  
-                 }
-                }
+                }else{
 
+                }
         }
+
+       
+         
         return redirect()->route('proposals.index')
                         ->with('success','Proposal updated successfully');
     }
@@ -321,7 +361,8 @@ class ProposalController extends Controller
         }else{
           $rfq =Proposal::where('rfq_status', '=', 'In Progress')->where('cust_name', '=', $name)->get();
         }
-        return view('proposals.index', compact('rfq'));
+         
+        return response()->json($rfq);
 
     }
 

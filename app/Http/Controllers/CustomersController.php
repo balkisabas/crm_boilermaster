@@ -228,6 +228,7 @@ class CustomersController extends Controller
         $userupdate->reg_no = $userupdate->reg_no.'@deletedregno'; 
         $userupdate->save();
         Personincharge::where('fk', $id)
+                        ->where('assign', 'customer')
                         ->update(['Active_status' => 'delete', 'status' => 'delete']);
         return redirect()->route('customers.index')->with('success','Customer Deleted Successfully.');
     }

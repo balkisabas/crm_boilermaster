@@ -21,8 +21,7 @@ class User extends Authenticatable
         'phone',
         'position',
         'company',
-        'status',
-        'zohoemail_code'
+        'status'
     ];
 
     protected $hidden = [

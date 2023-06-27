@@ -61,8 +61,10 @@
                                 <td>{{$i++}}</td>
                                 <td>{{ $user->name}}</td>
                                 <td>{{ $user->email}}</td>
-                                <td>{{ $user->company}}</td>
-                                <td>{{ $user->position}}</td>
+                                @php  $company = DB::table('Companies')->where('id', '=', $user->company)->first();  @endphp
+                                <td>{{ $company->company_name}}</td>
+                                @php  $positions = DB::table('positions')->where('id', '=', $user->position)->first();  @endphp
+                                <td>{{ $positions->name}}</td>
                                 <td> 
                                     @if(!empty($user->getRoleNames()))
                                         @foreach($user->getRoleNames() as $v)

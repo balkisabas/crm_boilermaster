@@ -54,8 +54,12 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Permission <span style="color:red">*</span></label>
+                                    <br>
+                                    <label>
+                                        {{ Form::checkbox('select_all', null, false, ['class' => 'select-all-checkbox']) }}
+                                        Select all permissions
+                                    </label>
                                     <div class="checkbox-list">
-                                        <br/>
                                         @foreach($permission as $value)
                                             <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
                                             {{ $value->name }}</label>
@@ -76,4 +80,18 @@
     </div> <!-- end row -->
 </form>
 @endsection
+@section('script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Handle "Select All" checkbox change event
+        $('.select-all-checkbox').change(function() {
+            // Get the status of the "Select All" checkbox
+            var isChecked = $(this).is(':checked');
 
+            // Set the same status to all permission checkboxes
+            $('.name').prop('checked', isChecked);
+        });
+    });
+</script>
+@endsection

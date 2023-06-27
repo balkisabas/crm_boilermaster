@@ -62,9 +62,9 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="avatar-md profile-user-wid mb-4">
-                            <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
+                            <!-- <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle"> -->
                         </div>
-                        <h5 class="font-size-15 text-truncate"><strong><?php echo e(Auth::user()->name); ?></strong><br><br>
+                        <h5 class="font-size-15 text-truncate"><strong><?php echo e(ucfirst(Auth::user()->name)); ?></strong><br><br>
                             <a href="<?php echo e(route('users.show', (Auth::user()->id))); ?>" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
                         </h5>
                     </div>

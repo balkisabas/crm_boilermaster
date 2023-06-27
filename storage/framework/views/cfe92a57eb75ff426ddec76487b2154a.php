@@ -51,7 +51,7 @@
                                 <select id="company" name="company" class="form-control">
                                 <option value="">-Please Select Company-</option>
                                 <?php $__currentLoopData = $company; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($k->company_name); ?>" <?php echo e($k->company_name == $proposal->company? 'selected':''); ?>><?php echo e($k->company_name); ?></option>
+                                    <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $proposal->company? 'selected':''); ?>><?php echo e($k->company_name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -62,7 +62,7 @@
                                 <select id="pic" name="pic" class="form-control">
                                     <option value="">-Please Select PIC-</option>
                                     <?php $__currentLoopData = $picUser; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($p->name); ?>" <?php echo e($p->name == $proposal->pic? 'selected':''); ?>><?php echo e($p->name); ?></option>
+                                        <option value="<?php echo e($p->id); ?>" <?php echo e($p->id == $proposal->pic? 'selected':''); ?>><?php echo e($p->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -75,7 +75,7 @@
                                 <select id="type" name="type" class="form-control">
                                 <option value="">-Please Select Type-</option>
                                 <?php $__currentLoopData = $rfq_type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($m->name); ?>" <?php echo e($m->name == $proposal->type? 'selected':''); ?>><?php echo e($m->name); ?></option>
+                                    <option value="<?php echo e($m->id); ?>" <?php echo e($m->id == $proposal->type? 'selected':''); ?>> <?php echo e($m->name); ?> </option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -86,7 +86,7 @@
                                 <select id="cust_name" name="cust_name" class="form-control">
                                 <option value="">-Please Select Customer-</option>
                                 <?php $__currentLoopData = $customer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cust): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($cust->name); ?>" <?php echo e($cust->name == $proposal->cust_name? 'selected':''); ?>><?php echo e($cust->name); ?></option>
+                                    <option value="<?php echo e($cust->id); ?>" <?php echo e($cust->id == $proposal->cust_name? 'selected':''); ?>><?php echo e($cust->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -95,11 +95,11 @@
                     <div class="row">   
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cust_pic" class="form-label">Customer PIC</label>
+                                <label for="cust_pic" class="form-label">Customer PIC <?php echo e($proposal->cust_pic); ?> </label>
                                 <select id="cust_pic" name="cust_pic" class="form-control">
                                     <option value="">-Please Select PIC-</option>
                                     <?php $__currentLoopData = $pic; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pic): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($pic->name); ?>" <?php echo e($pic->name == $proposal->cust_pic? 'selected':''); ?>><?php echo e($pic->name); ?></option>
+                                        <option value="<?php echo e($pic->id); ?>" <?php echo e($pic->id == $proposal->cust_pic? 'selected':''); ?>><?php echo e($pic->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -135,7 +135,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="final_pricing" class="form-label">Final Pricing </label>
-                                <input type="number" class="form-control" id="final_pricing" name="final_pricing" value="<?php echo e($proposal->final_pricing); ?>" placeholder="Enter price (e.g., 0.00)">
+                                <input type="number" step="0.01" min="0" class="form-control" id="final_pricing" name="final_pricing" value="<?php echo e($proposal->final_pricing); ?>" placeholder="Enter price (e.g., 0.00)">
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 <select id="rfq_status" name="rfq_status" class="form-control">
                                 <option value="">-Please Select Status-</option>
                                 <?php $__currentLoopData = $rfq_status; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $n): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($n->name); ?>" <?php echo e($n->name == $proposal->rfq_status? 'selected':''); ?>><?php echo e($n->name); ?></option>
+                                    <option value="<?php echo e($n->id); ?>" <?php echo e($n->id == $proposal->rfq_status? 'selected':''); ?>><?php echo e($n->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -169,60 +169,94 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="award_amount" class="form-label">Award Amount</label>
-                                <input type="number" class="form-control" id="award_amount" name="award_amount" value="<?php echo e($proposal->award_amount); ?>" placeholder="Enter award amount">
+                                <input type="number" step="0.01" min="0" class="form-control" id="award_amount" name="award_amount" value="<?php echo e($proposal->award_amount); ?>" placeholder="Enter price (e.g., 0.00)">
                             </div>  
                         </div> 
                     </div>
                     <hr style="  border: none;  height: 1px; background-color: black;">
                     <div id="textFieldsContainer">
-                    <?php $__currentLoopData = $proposalDoc; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="row">
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="document_name">Document Name</label>
-                                    <input type="text" class="form-control" id="document_name"  name="data1[]" value="<?php echo e($doc->document_name); ?>">
-                                    <input type="hidden" class="form-control" id="doc_id" name="data3[]" value="<?php echo e($doc->id); ?>">
-                                </div>
-                            </div> 
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                <label for="document_type" class="form-label">Documents Type</label>
-                                    <select id="document_type" name="data2[]" class="form-control">
-                                        <option value="">-Please Select Document Type-</option>
-                                        <?php $__currentLoopData = $docs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($k->name); ?>" <?php echo e($k->name == $doc->document_type? 'selected':''); ?>><?php echo e($k->name); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </select>
-                                </div>  
-                            </div> 
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="files" class="form-label">Filename</label>
-                                    <input type="text" id="files" name="filename[]" class="form-control" value="<?php echo e($doc->filename); ?>">
-                                </div> 
-                            </div>
-                            <div class="col-md-2">
-                                <div class="mb-2">
-                                    <label for="" class="form-label">&nbsp;&nbsp;</label>
-                                    <input type="file" id="files" name="files[]" class="form-control">
-                                </div> 
-                            </div>
-                            <?php 
-                                $count = $loop->index + 1
-                                ?>
+                        
+                       <?php if( $proposalDoc->isEmpty()): ?>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                        <label for="document_name">Document Name hello</label>
+                                            <input type="text" class="form-control" id="document_name"  name="data1[]" placeholder="Enter document name">
+                                            <input type="hidden" class="form-control" id="doc_id" name="data3[]" value="new">
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                        <label for="document_type" class="form-label">Documents Type<span style="color:red">*</span></label>
+                                            <select id="document_type" name="data2[]" class="form-control">
+                                                <option value="">-Please Select Document Type-</option>
+                                                <?php $__currentLoopData = $docs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($k->name); ?>" <?php echo e($k->id == $k->name? 'selected':''); ?>><?php echo e($k->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>  
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label for="files" class="form-label">File <span style="color:red">*</span></label>
+                                            <input type="file" id="files" name="files[]" class="form-control"  >
+                                        </div> 
+                                    </div> 
 
-                                <?php if( $count  > 1): ?>
-                                    <div class="col-sm-1">
-                                    <a href="<?php echo e(route('delete_doc', ['id' => $doc->id, 'rfqid' => $proposal->id])); ?>" onclick="return confirm('Are you sure you want to delete  ?')" class="btn btn-warning w-md  col-sm-1 removeTextField" style="margin-top: 27px;"> Remove </a> 
-                                    </div>
-                                <?php else: ?>
                                     <div class="col-sm-1">
                                         <button type="button" name="tmb" id="addTextField" class="btn btn-success w-md" style="margin-top: 27px;">Add</button>
                                     </div>
+                                    
+                                </div>
+                          
+                        <?php else: ?>
+      
+                                <?php $__currentLoopData = $proposalDoc; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="row">
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label for="document_name">Document Name  </label>
+                                            <input type="text" class="form-control" id="document_name"  name="data1[]" value="<?php echo e($doc->document_name); ?>">
+                                            <input type="hidden" class="form-control" id="doc_id" name="data3[]" value="<?php echo e($doc->id); ?>">
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                        <label for="document_type" class="form-label">Documents Type</label>
+                                            <select id="document_type" name="data2[]" class="form-control">
+                                                <option value="">-Please Select Document Type-</option>
+                                                <?php $__currentLoopData = $docs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $doc->document_type? 'selected':''); ?>><?php echo e($k->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>  
+                                    </div> 
+                                    <div class="col-md-2">
+                                        <div class="mb-3">
+                                            <label for="files" class="form-label">Filename</label>
+                                            <input type="text" id="files" name="filename[]" class="form-control" value="<?php echo e($doc->filename); ?>">
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="mb-2">
+                                            <label for="" class="form-label">&nbsp;&nbsp;</label>
+                                            <input type="file" id="files" name="files[]" class="form-control">
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="col-sm-1">
+                                        <a href="<?php echo e(route('delete_doc', ['id' => $doc->id, 'rfqid' => $proposal->id])); ?>" onclick="return confirm('Are you sure you want to delete  ?')" class="btn btn-warning w-md  col-sm-1 removeTextField" style="margin-top: 27px;"> Remove </a> 
+                                    </div>
+                                    <?php if( $loop->index == 0): ?>
+                                    <div class="col-sm-1">
+                                        <button type="button" name="tmb" id="addTextField" class="btn btn-success w-md" style="margin-top: 27px;">Add</button>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                <?php endif; ?>
-                        </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </div>
                     <br><br>  
                     <div class="float-end">
@@ -258,7 +292,7 @@ $(document).ready(function() {
                                             <select id="document_type" name="data2[]" class="form-control">
                                                 <option value="">-Please Select Document Type-</option>
                                                 <?php $__currentLoopData = $docs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($k->name); ?>" <?php echo e($k->id == $k->name? 'selected':''); ?>><?php echo e($k->name); ?></option>
+                                                    <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $k->name? 'selected':''); ?>><?php echo e($k->name); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>  
@@ -266,7 +300,7 @@ $(document).ready(function() {
                                     <div class="col-md-3">
                                         <div class="mb-3">
                                             <label for="files" class="form-label">File <span style="color:red">*</span></label>
-                                            <input type="file" id="files" name="files[]" class="form-control" required>
+                                            <input type="file" id="files" name="files[]" class="form-control"  >
                                         </div> 
                                     </div> 
                                     <div class="col-sm-1">
@@ -284,6 +318,83 @@ $(document).ready(function() {
         grandParentDiv.remove();
         });
     });
+
+    $('#cust_name').change(function(){
+            var id = $(this).val();
+            alert(id); 
+            var cust_pic = document.getElementById('cust_pic'); 
+            $('#cust_pic').find('option').not(':first').remove();
+           
+            $.ajax({ 
+                url: "<?php echo e(url('fetchData')); ?>/"+id,
+                type: 'GET',
+                datatype: 'json',
+                
+                success: function(response){
+                     
+                    console.log(response );
+
+                    while (cust_pic.options.length > 0) {
+                        cust_pic.options[cust_pic   .options.length - 1].remove();
+                    } 
+
+                    if(  response.length == 0 ){
+                        cust_pic.disabled = false;
+                        var option = "<option value='nopiccust'>No PIC In Customer  </option>"; 
+                        $("#cust_pic").append(option);
+                    }else{
+                        cust_pic.disabled = false;
+                        $("#cust_pic option[value='nopic']").remove();
+                        response.forEach(function(item) {
+                        console.log(item.name);
+                        var option = "<option value='"+item.id+"'>"+item.name+"</option>"; 
+                        $("#cust_pic").append(option); 
+                        });
+                    }
+                    
+                }
+                
+            });
+        });
+
+        $('#company').change(function(){
+            var id = $(this).val();
+           // alert(id); 
+            var pic = document.getElementById('pic'); 
+            $('#pic').find('option').not(':first').remove();
+           
+            $.ajax({ 
+                url: "<?php echo e(url('fetchDatapiccompny')); ?>/"+id,
+                type: 'GET',
+                datatype: 'json',
+                
+                success: function(response){
+                     
+                    console.log(response.length);
+                    
+                    while (pic.options.length > 0) {
+                        pic.options[pic.options.length - 1].remove();
+                    }
+
+                    if(  response.length == 0 ){
+                        pic.disabled = false;
+                        var option = "<option value='nopic'>No PIC In Selected Company </option>"; 
+                        $("#pic").append(option);
+                    }else{
+                        pic.disabled = false;
+                         
+                        response.forEach(function(item) {
+                        console.log(item.name);
+                        var option = "<option value='"+item.id+"'>"+item.name+"</option>"; 
+                        $("#pic").append(option); 
+                        });
+                    }
+
+                     
+                }
+                
+            });
+        });
 </script>
 <?php $__env->stopSection(); ?>
 

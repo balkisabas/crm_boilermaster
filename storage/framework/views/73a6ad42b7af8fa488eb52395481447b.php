@@ -83,7 +83,7 @@
                                             <select id="pic" name="pic" class="form-control">
                                             <option value="">-Please Select PIC-</option>
                                             <?php $__currentLoopData = $picUser; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($p->name); ?>" <?php echo e($p->name == $p->pic? 'selected':''); ?>><?php echo e($p->name); ?></option>
+                                                <option value="<?php echo e($p->id); ?>" <?php echo e($p->name == $p->pic? 'selected':''); ?>><?php echo e($p->name); ?></option>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>

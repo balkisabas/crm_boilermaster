@@ -16,7 +16,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Proposal Lists</h4>
+            <h4 class="mb-sm-0 font-size-18">Proposal Lists  </h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -61,13 +61,20 @@
                             <?php else: ?>
                             <?php $__currentLoopData = $rfq; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td><?php echo e($i++); ?></td>
-                            <td><?php echo e($m->company); ?></td>
-                            <td><?php echo e($m->cust_name); ?></td>
-                            <td><?php echo e($m->pic); ?></td>
+                            
+                            <?php  $company = DB::table('Companies')->where('id', '=', $m->company)->first();  ?>
+                                        <td><?php echo e($company->company_name); ?></td>
+                            <?php  $cust = DB::table('Customers')->where('id', '=', $m->cust_name)->first();  ?>
+                                        <td><?php echo e($cust->name); ?></td>
+                            <?php  $pic = DB::table('Users')->where('id', '=', $m->pic)->first();  ?>
+                                        <td><?php echo e($pic->name); ?></td>
+                                        
                             <td><?php echo e($m->final_pricing); ?></td>
                             <td><?php echo e($m->rfq_no); ?></td>
                             <td><?php echo e($duedate = date("d-m-Y", strtotime($m->due_date))); ?></td>
-                            <td><?php echo e($m->rfq_status); ?></td>
+                            
+                            <?php  $status = DB::table('Rfqstatuses')->where('id', '=', $m->rfq_status)->first();  ?>
+                                        <td><?php echo e($status->name); ?></td>
                             <td>
                                  <a href="<?php echo e(route('proposals.show',$m->id)); ?>"><i class="bx bx-search-alt" title="View Details Companies" style="color:black"></i></a>
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-proposal')): ?>

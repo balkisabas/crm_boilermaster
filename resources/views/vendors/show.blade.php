@@ -64,9 +64,10 @@
                                             @endif
                                         </tr> 
                                         <tr>
+                                        @php  $pic = DB::table('Users')->where('id', '=',  $vendor['pic'])->first(); @endphp
                                             <th class="widthtable">Liaise</th> 
                                             @if (isset($vendor['pic']))  
-                                                <td> : {{ $vendor['pic'] }}</td>
+                                                <td> : {{ $pic->name }}</td>
                                             @else 
                                                 <td> :  -</td>
                                             @endif
