@@ -30,7 +30,6 @@
         $pic = DB::table('Users')->where('id', '=', $rfq->pic)->first(); 
         $cust_pic = DB::table('Personincharges')->where('id', '=', $rfq->cust_pic)->first();
         $type = DB::table('Rfqtypes')->where('id', '=', $rfq->type)->first();
-        $status = DB::table('Rfqstatuses')->where('id', '=', $rfq->rfq_status)->first();
          
 ?>
 <div class="row">
@@ -44,59 +43,115 @@
                     <thead>
                         <tr>
                             <th class="widthtable">Name</th>
-                            <td><?php echo e($company->company_name); ?></td>
+                            <?php if(isset($company->company_name)): ?>  
+                                <td> : <?php echo e($company->company_name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">PIC</th>
-                            <td><?php echo e($pic->name); ?></td>
+                            <?php if(isset($pic->name )): ?>  
+                                <td> : <?php echo e($pic->name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Proposal type</th>
-                            <td><?php echo e($type->name); ?></td>
+                            <?php if(isset($type->name)): ?>  
+                                <td> : <?php echo e($type->name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer</th>
-                            <td><?php echo e($cust->name); ?></td>
+                            <?php if(isset($cust->name )): ?>  
+                                <td> : <?php echo e($cust->name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PIC</th>
-                            <td><?php echo e($cust_pic->name); ?></td>
+                            <?php if(isset($cust_pic->name)): ?>  
+                                <td> : <?php echo e($cust_pic->name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer email</th>
-                            <td><?php echo e($rfq->cust_email); ?></td>
+                            <?php if(isset($rfq->cust_email)): ?>  
+                                <td> : <?php echo e($rfq->cust_email); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ No</th>
-                            <td><?php echo e($rfq->rfq_no); ?></td>
+                            <?php if(isset($rfq->rfq_no)): ?>  
+                                <td> : <?php echo e($rfq->rfq_no); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ title</th>
-                            <td><?php echo e($rfq->rfq_title); ?></td>
+                            <?php if(isset($rfq->rfq_title)): ?>  
+                                <td> : <?php echo e($rfq->rfq_title); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Due Date</th>
-                            <td><?php echo e($rfq->due_date); ?></td>
+                            <?php if(isset($rfq->due_date )): ?>  
+                                <td> : <?php echo e($rfq->due_date); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Final Pricing</th>
-                            <td><?php echo e($rfq->final_pricing); ?></td>
+                            <?php if(isset($rfq->final_pricing)): ?>  
+                                <td> : RM <?php echo e($rfq->final_pricing); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ status</th>
-                            <td><?php echo e($status->name); ?></td>
+                            <?php if(isset($rfq->rfq_status )): ?>  
+                                <td> : <?php echo e($rfq->rfq_status); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PO No</th>
-                            <td><?php echo e($rfq->cust_po_no); ?></td>
+                            <?php if(isset($rfq->cust_po_no )): ?>  
+                                <td> : <?php echo e($rfq->cust_po_no); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Date Award</th>
-                            <td><?php echo e($rfq->date_award); ?></td>
+                            <?php if(isset($rfq->date_award )): ?>  
+                                <td> : <?php echo e($rfq->date_award); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Award Amount</th>
-                            <td><?php echo e($rfq->award_amount); ?></td>
+                            <?php if(isset($rfq->award_amount)): ?>  
+                                <td> : RM <?php echo e($rfq->award_amount); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         
                         <tr><td><strong>Uploaded Document</strong><td></td></td>

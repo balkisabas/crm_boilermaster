@@ -72,9 +72,7 @@
                             <td><?php echo e($m->final_pricing); ?></td>
                             <td><?php echo e($m->rfq_no); ?></td>
                             <td><?php echo e($duedate = date("d-m-Y", strtotime($m->due_date))); ?></td>
-                            
-                            <?php  $status = DB::table('Rfqstatuses')->where('id', '=', $m->rfq_status)->first();  ?>
-                                        <td><?php echo e($status->name); ?></td>
+                            <td><?php echo e($m->rfq_status); ?></td>
                             <td>
                                  <a href="<?php echo e(route('proposals.show',$m->id)); ?>"><i class="bx bx-search-alt" title="View Details Companies" style="color:black"></i></a>
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-proposal')): ?>

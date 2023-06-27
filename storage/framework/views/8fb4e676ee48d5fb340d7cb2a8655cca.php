@@ -39,31 +39,58 @@
                     <thead>
                         <tr>
                             <th class="widthtable">Name</th>
-                            <td><?php echo e($user->name); ?></td>
+                            <?php if(isset($user->name)): ?>  
+                                <td> : <?php echo e($user->name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr>  
                         <tr>
                             <th class="widthtable">Email</th>
-                            <td><?php echo e($user->email); ?></td>
+                            <?php if(isset($user->email)): ?>  
+                                <td> : <?php echo e($user->email); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Alternative Email</th>
-                            <td><?php echo e($user->alternative_email); ?></td>
+                            <?php if(isset($user->alternative_email)): ?>  
+                                <td> : <?php echo e($user->alternative_email); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Position</th>
-                            <td><?php echo e($positions->name); ?></td>
+                            <?php if(isset($positions->name )): ?>  
+                                <td> : <?php echo e($positions->name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr> 
                         <tr>
                             <th class="widthtable">Company</th>
-                            <td><?php echo e($company->company_name); ?></td>
+                            <?php if(isset($company->company_name)): ?>  
+                                <td> : <?php echo e($company->company_name); ?></td>
+                            <?php else: ?> 
+                                <td> :  -</td>
+                            <?php endif; ?>
                         </tr>
                         <tr>
                             <th class="widthtable">Active</th>
-                            <td> <?php if($user->status == 'Yes'): ?>
-                                <span class="badge bg-success fs-6"><?php echo e($user->status); ?></span>
-                                <?php else: ?>
-                                <span class="badge bg-danger fs-6"><?php echo e($user->status); ?></span>
-                                <?php endif; ?>
+                            <?php if(isset($user->status)): ?>  
+                                <td>: 
+                                    <?php if($user->status == 'Yes'): ?>
+                                    <span class="badge bg-success fs-6"><?php echo e($user->status); ?></span>
+                                    <?php else: ?>
+                                    <span class="badge bg-danger fs-6"><?php echo e($user->status); ?></span>
+                                    <?php endif; ?>
+                                </td>
+                                <?php else: ?> 
+                                    <td> :  -</td>
+                            <?php endif; ?>
+                            <td> 
                             </td>
                         </tr>
                     </thead>

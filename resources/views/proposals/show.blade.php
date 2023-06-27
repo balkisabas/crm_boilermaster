@@ -30,7 +30,6 @@
         $pic = DB::table('Users')->where('id', '=', $rfq->pic)->first(); 
         $cust_pic = DB::table('Personincharges')->where('id', '=', $rfq->cust_pic)->first();
         $type = DB::table('Rfqtypes')->where('id', '=', $rfq->type)->first();
-        $status = DB::table('Rfqstatuses')->where('id', '=', $rfq->rfq_status)->first();
          
 @endphp
 <div class="row">
@@ -44,59 +43,115 @@
                     <thead>
                         <tr>
                             <th class="widthtable">Name</th>
-                            <td>{{ $company->company_name }}</td>
+                            @if (isset($company->company_name))  
+                                <td> : {{$company->company_name}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">PIC</th>
-                            <td>{{ $pic->name }}</td>
+                            @if (isset($pic->name ))  
+                                <td> : {{$pic->name }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Proposal type</th>
-                            <td>{{ $type->name }}</td>
+                            @if (isset($type->name))  
+                                <td> : {{$type->name}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer</th>
-                            <td>{{ $cust->name }}</td>
+                            @if (isset($cust->name ))  
+                                <td> : {{$cust->name }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PIC</th>
-                            <td>{{ $cust_pic->name }}</td>
+                            @if (isset($cust_pic->name))  
+                                <td> : {{$cust_pic->name}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer email</th>
-                            <td>{{ $rfq->cust_email }}</td>
+                            @if (isset($rfq->cust_email))  
+                                <td> : {{ $rfq->cust_email}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ No</th>
-                            <td>{{ $rfq->rfq_no }}</td>
+                            @if (isset($rfq->rfq_no))  
+                                <td> : {{$rfq->rfq_no}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ title</th>
-                            <td>{{ $rfq->rfq_title }}</td>
+                            @if (isset($rfq->rfq_title))  
+                                <td> : {{$rfq->rfq_title}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Due Date</th>
-                            <td>{{ $rfq->due_date }}</td>
+                            @if (isset($rfq->due_date ))  
+                                <td> : {{$rfq->due_date }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Final Pricing</th>
-                            <td>{{ $rfq->final_pricing }}</td>
+                            @if (isset($rfq->final_pricing))  
+                                <td> : RM {{$rfq->final_pricing}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">RFQ status</th>
-                            <td>{{ $status->name }}</td>
+                            @if (isset($rfq->rfq_status ))  
+                                <td> : {{$rfq->rfq_status }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Customer PO No</th>
-                            <td>{{ $rfq->cust_po_no }}</td>
+                            @if (isset($rfq->cust_po_no ))  
+                                <td> : {{$rfq->cust_po_no }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Date Award</th>
-                            <td>{{ $rfq->date_award }}</td>
+                            @if (isset($rfq->date_award ))  
+                                <td> : {{$rfq->date_award }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Award Amount</th>
-                            <td>{{ $rfq->award_amount }}</td>
+                            @if (isset($rfq->award_amount))  
+                                <td> : RM {{$rfq->award_amount}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         
                         <tr><td><strong>Uploaded Document</strong><td></td></td>

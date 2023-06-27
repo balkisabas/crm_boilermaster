@@ -39,31 +39,58 @@
                     <thead>
                         <tr>
                             <th class="widthtable">Name</th>
-                            <td>{{ $user->name}}</td>
+                            @if (isset($user->name))  
+                                <td> : {{$user->name}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr>  
                         <tr>
                             <th class="widthtable">Email</th>
-                            <td>{{ $user->email}}</td>
+                            @if (isset($user->email))  
+                                <td> : {{$user->email}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Alternative Email</th>
-                            <td>{{ $user->alternative_email}}</td>
+                            @if (isset($user->alternative_email))  
+                                <td> : {{$user->alternative_email}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Position</th>
-                            <td>{{ $positions->name }}</td>
+                            @if (isset($positions->name ))  
+                                <td> : {{$positions->name }}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr> 
                         <tr>
                             <th class="widthtable">Company</th>
-                            <td>{{ $company->company_name}}</td>
+                            @if (isset($company->company_name))  
+                                <td> : {{$company->company_name}}</td>
+                            @else 
+                                <td> :  -</td>
+                            @endif
                         </tr>
                         <tr>
                             <th class="widthtable">Active</th>
-                            <td> @if($user->status == 'Yes')
-                                <span class="badge bg-success fs-6">{{ $user->status}}</span>
-                                @else
-                                <span class="badge bg-danger fs-6">{{ $user->status}}</span>
-                                @endif
+                            @if (isset($user->status))  
+                                <td>: 
+                                    @if($user->status == 'Yes')
+                                    <span class="badge bg-success fs-6">{{ $user->status}}</span>
+                                    @else
+                                    <span class="badge bg-danger fs-6">{{ $user->status}}</span>
+                                    @endif
+                                </td>
+                                @else 
+                                    <td> :  -</td>
+                            @endif
+                            <td> 
                             </td>
                         </tr>
                     </thead>

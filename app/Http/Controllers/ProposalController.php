@@ -38,9 +38,9 @@ class ProposalController extends Controller
 
     public function index()
     {
-        $rfq = Proposal::where('delete_status', 'active') 
+        $rfq = Proposal::where('delete_status', 'active')
+                        ->where('company', Auth::user()->company)
                         ->get();
-        
         return view('proposals.index', compact('rfq'));
     }
 
@@ -214,13 +214,13 @@ class ProposalController extends Controller
                     $file = $files[$key];
                 }
                 else if(empty($field1Value) && empty($field2Value)) {
-                    $file = 'oi';
+                    $file = 'non';
                     
                 }else{
                     $file = 'nofile';
                 }
 
-                if ($fieldidValue === 'new' && $file != 'oi') {
+                if ($fieldidValue === 'new' && $file != 'non') {
                             
                             $name = $file->getClientOriginalName();
                             $folder = 'uploads';
@@ -243,7 +243,7 @@ class ProposalController extends Controller
                         $proposal_docs->document_type = $field2Value;
                         $proposal_docs->status = 'Active';
                         $proposal_docs->save();  
-                }else if ($file != 'oi'){
+                }else if ($file != 'non'){
                         ProposalDoc::find($fieldidValue);
                             
                         $name = $file->getClientOriginalName();

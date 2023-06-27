@@ -142,7 +142,7 @@
                                     <select id="rfq_status" name="rfq_status" class="form-control" required>
                                     <option value="">-Please Select Status-</option>
                                     @foreach ($rfq_status as $n)
-                                        <option value="{{$n->id}}" {{$n->id == $n->name? 'selected':''}}>{{$n->name}}</option>
+                                        <option value="{{$n->name}}" {{$n->name == $n->name? 'selected':''}}>{{$n->name}}</option>
                                     @endforeach
                                     </select>
                                 </div>

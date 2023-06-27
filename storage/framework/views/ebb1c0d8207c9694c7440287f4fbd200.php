@@ -10,7 +10,7 @@
 <?php $__env->stopSection(); ?>
 <?php
     $data = DB::table('proposals') 
-                ->where('pic', Auth::user()->name) 
+                ->where('pic', Auth::user()->id) 
                 ->orderBy('due_date', 'asc')
                     ->get();
     $totalCount = count($data);
@@ -18,19 +18,19 @@
 <?php
     $submit = DB::table('proposals')
                 ->where('rfq_status', '=', 'Submitted') 
-                ->where('pic', Auth::user()->name) 
+                ->where('pic', Auth::user()->id) 
                 ->get();
     $inprogs = DB::table('proposals')
                 ->where('rfq_status', '=', 'In Progress')
-                ->where('pic', Auth::user()->name)  
+                ->where('pic', Auth::user()->id)  
                 ->get();
     $nsubmit = DB::table('proposals')
                 ->where('rfq_status', '=', 'Not Submitted')
-                ->where('pic', Auth::user()->name)  
+                ->where('pic', Auth::user()->id)  
                 ->get();
     $award = DB::table('proposals')
                 ->where('rfq_status', '=', 'Awarded')
-                ->where('pic', Auth::user()->name)  
+                ->where('pic', Auth::user()->id)  
                 ->get();
 
     $a = count($submit);

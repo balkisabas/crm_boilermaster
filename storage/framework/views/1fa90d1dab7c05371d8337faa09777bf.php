@@ -162,7 +162,7 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                             
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>           
                         <tr>
                             <?php
                             $i = 1;
@@ -173,12 +173,16 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td  align="center"><?php echo e($i++); ?></td>
                             <?php if(  $selectedOption == 'PIC'): ?> 
-                            <td  align="center"><?php echo e($m->pic); ?></td>
-                            <?php else: ?> 
-                            <td  align="center"><?php echo e($m->cust_name); ?></td>
-                            <?php endif; ?>
-                            
+                                        
+                            <?php  $pic = DB::table('Users')->where('id', '=', $m->pic)->first();  ?>   
+                            <td  align="center"><?php echo e($pic->name); ?></td>
 
+                            <?php else: ?> 
+
+                            <?php  $cust = DB::table('Customers')->where('id', '=', $m->cust_name)->first();  ?>
+                            <td  align="center"><?php echo e($cust->name); ?></td>
+                            
+                            <?php endif; ?>
                             <?php
     
                             if( $selectedOption == 'PIC'){

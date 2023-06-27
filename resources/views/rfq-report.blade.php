@@ -161,7 +161,7 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                             
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>           
                         <tr>
                             @php
                             $i = 1;
@@ -172,12 +172,16 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
                             @foreach ($data as $m)
                             <td  align="center">{{$i++}}</td>
                             @if(  $selectedOption == 'PIC') 
-                            <td  align="center">{{ $m->pic}}</td>
-                            @else 
-                            <td  align="center">{{ $m->cust_name}}</td>
-                            @endif
-                            
+                                        
+                            @php  $pic = DB::table('Users')->where('id', '=', $m->pic)->first();  @endphp   
+                            <td  align="center">{{ $pic->name}}</td>
 
+                            @else 
+
+                            @php  $cust = DB::table('Customers')->where('id', '=', $m->cust_name)->first();  @endphp
+                            <td  align="center">{{ $cust->name}}</td>
+                            
+                            @endif
                             @php
     
                             if( $selectedOption == 'PIC'){

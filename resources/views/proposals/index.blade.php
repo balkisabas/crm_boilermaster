@@ -71,9 +71,7 @@
                             <td>{{ $m->final_pricing}}</td>
                             <td>{{ $m->rfq_no}}</td>
                             <td>{{$duedate = date("d-m-Y", strtotime($m->due_date))}}</td>
-                            
-                            @php  $status = DB::table('Rfqstatuses')->where('id', '=', $m->rfq_status)->first();  @endphp
-                                        <td>{{ $status->name}}</td>
+                            <td>{{ $m->rfq_status}}</td>
                             <td>
                                  <a href="{{ route('proposals.show',$m->id) }}"><i class="bx bx-search-alt" title="View Details Companies" style="color:black"></i></a>
                                 @can('edit-proposal')

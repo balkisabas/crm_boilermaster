@@ -95,7 +95,7 @@
                     <div class="row">   
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cust_pic" class="form-label">Customer PIC <?php echo e($proposal->cust_pic); ?> </label>
+                                <label for="cust_pic" class="form-label">Customer PIC   </label>
                                 <select id="cust_pic" name="cust_pic" class="form-control">
                                     <option value="">-Please Select PIC-</option>
                                     <?php $__currentLoopData = $pic; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pic): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -146,7 +146,7 @@
                                 <select id="rfq_status" name="rfq_status" class="form-control">
                                 <option value="">-Please Select Status-</option>
                                 <?php $__currentLoopData = $rfq_status; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $n): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($n->id); ?>" <?php echo e($n->id == $proposal->rfq_status? 'selected':''); ?>><?php echo e($n->name); ?></option>
+                                    <option value="<?php echo e($n->name); ?>" <?php echo e($n->name == $proposal->rfq_status? 'selected':''); ?>><?php echo e($n->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -321,7 +321,7 @@ $(document).ready(function() {
 
     $('#cust_name').change(function(){
             var id = $(this).val();
-            alert(id); 
+            //alert(id); 
             var cust_pic = document.getElementById('cust_pic'); 
             $('#cust_pic').find('option').not(':first').remove();
            

@@ -95,7 +95,7 @@
                     <div class="row">   
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cust_pic" class="form-label">Customer PIC {{$proposal->cust_pic}} </label>
+                                <label for="cust_pic" class="form-label">Customer PIC   </label>
                                 <select id="cust_pic" name="cust_pic" class="form-control">
                                     <option value="">-Please Select PIC-</option>
                                     @foreach ($pic as $pic)
@@ -146,7 +146,7 @@
                                 <select id="rfq_status" name="rfq_status" class="form-control">
                                 <option value="">-Please Select Status-</option>
                                 @foreach ($rfq_status as $n)
-                                    <option value="{{$n->id}}" {{$n->id == $proposal->rfq_status? 'selected':''}}>{{$n->name}}</option>
+                                    <option value="{{$n->name}}" {{$n->name == $proposal->rfq_status? 'selected':''}}>{{$n->name}}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -321,7 +321,7 @@ $(document).ready(function() {
 
     $('#cust_name').change(function(){
             var id = $(this).val();
-            alert(id); 
+            //alert(id); 
             var cust_pic = document.getElementById('cust_pic'); 
             $('#cust_pic').find('option').not(':first').remove();
            

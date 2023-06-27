@@ -142,7 +142,7 @@
                                     <select id="rfq_status" name="rfq_status" class="form-control" required>
                                     <option value="">-Please Select Status-</option>
                                     <?php $__currentLoopData = $rfq_status; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $n): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($n->id); ?>" <?php echo e($n->id == $n->name? 'selected':''); ?>><?php echo e($n->name); ?></option>
+                                        <option value="<?php echo e($n->name); ?>" <?php echo e($n->name == $n->name? 'selected':''); ?>><?php echo e($n->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
