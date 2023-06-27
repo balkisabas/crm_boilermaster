@@ -63,7 +63,12 @@ class UserController extends Controller
         
         //dd($request);
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        // Check if password is provided in the request
+        if ($request->filled('password')) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            $input['password'] = null;
+        }
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
@@ -116,18 +121,19 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email',
             'roles' => 'required'
         ]);
     
         //dd($request);
         $input = $request->all();
-        // if(!empty($input['password'])){ 
-        //     $input['password'] = Hash::make($input['password']);
-        // }else{
-        //     $input = Arr::except($input,array('password'));    
-        // }
-    
+       // Check if password is provided in the request
+        if ($request->filled('password')) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            $input['password'] = null;
+        }
+
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();

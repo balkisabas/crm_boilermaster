@@ -76,7 +76,7 @@
                         </div>
                         <div class="row">
                             <div class="radio-container">
-                                <label for="status" class="form-label">Status <span style="color:red">*</span></label>
+                                <label for="status" class="form-label">Activation Status <span style="color:red">*</span></label>
                                 <br>
                                 <input type="radio" class="form-check-input"  name="status" value="Yes">Yes
                                 <input type="radio" class="form-check-input"  name="status"  value="No">No

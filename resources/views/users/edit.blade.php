@@ -80,8 +80,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password <span style="color:red">*</span></label>
-                                    <input type="password" class="form-control" id="password" name="password" value="{{$user->password}}" disabled>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" value="{{$user->password}}">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="alternative_email" class="form-label">Alternative Email <span style="color:red">*</span></label>
+                                    <label for="alternative_email" class="form-label">Alternative Email</label>
                                     {!! Form::text('alternative_email', null, array('placeholder' => 'alternative_email','class' => 'form-control')) !!}
                                 </div>
                             </div>
@@ -139,20 +139,20 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                    <div class="mb-3">
+                                <div class="radio-container">
+                                    <label for="status" class="form-label">Activation Status</label>
+                                    <br>
+                                    <input type="radio" style="margin-top:10px" name="status" value="Yes" {{ $user->status == 'Yes' ? 'checked' : '' }}> Yes
+                                    <input type="radio"  name="status"  value="No" {{ $user->status == 'No' ? 'checked' : '' }}>No
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="mb-3" hidden>
                                         <label for="code" class="form-label">Zoho email permission code</label>
                                         <input type="text" class="form-control" id="zohoemail_code" name="zohoemail_code" value="{{$user->zohoemail_code}}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="radio-container">
-                                        <label for="status" class="form-label">Status</label>
-                                        <br>
-                                        <input type="radio" style="margin-top:10px" name="status" value="Yes" {{ $user->status == 'Yes' ? 'checked' : '' }}> Yes
-                                        <input type="radio"  name="status"  value="No" {{ $user->status == 'No' ? 'checked' : '' }}>No
-                                    </div>
-                                </div>
-                        </div>
+                            </div>
                         <div class="float-end">
                             <button type="submit" class="btn btn-success w-md">Save</button>
                             <button type="reset" class="btn btn-secondary w-md">Reset</button>
