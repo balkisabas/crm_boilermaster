@@ -81,11 +81,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="position" class="form-label">Position </label>
-                                    <select name="position" id="position" class="form-control">
+                                    <label for="position" class="form-label">Position <span style="color:red">*</span></label>
+                                    <select name="position" id="position" class="form-control" required>
                                         <option value="">-Please Select position-</option>
                                         @foreach ($position as $m)
-                                        <option value="{{$m->id}}" {{$m->id == $m->position? 'selected':''}}>{{$m->name}}({{$m->id}})</option>
+                                        <option value="{{$m->id}}" {{$m->id == $m->position? 'selected':''}}>{{$m->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -94,11 +94,11 @@
                         <div class="row">                                            
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="company" class="form-label">Company </label>
-                                    <select name="company" id="company" class="form-control">
+                                    <label for="company" class="form-label">Company <span style="color:red">*</span></label>
+                                    <select name="company" id="company" class="form-control" required>
                                     <option value="">-Please Select company-</option>
                                         @foreach ($company as $k)
-                                        <option value="{{$k->id}}" {{$k->id == $k->company? 'selected':''}}>{{$k->company_name}}($k->id)</option>
+                                        <option value="{{$k->id}}" {{$k->id == $k->company? 'selected':''}}>{{$k->company_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -118,7 +118,7 @@
                             <div class="col-md-6">
                                 <div class="col-md-6">
                                     <div class="radio-container">
-                                        <label for="status" class="form-label">Status</label>
+                                        <label for="status" class="form-label">Activation Status</label>
                                         <br>
                                         <input type="radio" style="margin-top:10px" name="status" value="Yes">Yes
                                         <input type="radio"  name="status"  value="No">No

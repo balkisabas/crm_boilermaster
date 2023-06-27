@@ -37,6 +37,8 @@
                                 <th>Event</th>
                                 <th>User</th>
                                 <th>Description</th>
+                                <th>Date Create</th>
+                                <th>Date Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -179,6 +181,8 @@
 
                                     <?php endswitch; ?>
                                 </td>
+                                <td><?php echo e($datecreate =  date("d-m-Y H:i", strtotime ($audit->created_at))); ?></td>
+                                <td><?php echo e($dateupdate =  date("d-m-Y H:i", strtotime ($audit->updated_at))); ?></td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>

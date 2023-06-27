@@ -82,11 +82,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="position" class="form-label">Position </label>
-                                    <select name="position" id="position" class="form-control">
+                                    <label for="position" class="form-label">Position <span style="color:red">*</span></label>
+                                    <select name="position" id="position" class="form-control" required>
                                         <option value="">-Please Select position-</option>
                                         <?php $__currentLoopData = $position; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($m->id); ?>" <?php echo e($m->id == $m->position? 'selected':''); ?>><?php echo e($m->name); ?>(<?php echo e($m->id); ?>)</option>
+                                        <option value="<?php echo e($m->id); ?>" <?php echo e($m->id == $m->position? 'selected':''); ?>><?php echo e($m->name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
@@ -95,11 +95,11 @@
                         <div class="row">                                            
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="company" class="form-label">Company </label>
-                                    <select name="company" id="company" class="form-control">
+                                    <label for="company" class="form-label">Company <span style="color:red">*</span></label>
+                                    <select name="company" id="company" class="form-control" required>
                                     <option value="">-Please Select company-</option>
                                         <?php $__currentLoopData = $company; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $k->company? 'selected':''); ?>><?php echo e($k->company_name); ?>($k->id)</option>
+                                        <option value="<?php echo e($k->id); ?>" <?php echo e($k->id == $k->company? 'selected':''); ?>><?php echo e($k->company_name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
@@ -119,7 +119,7 @@
                             <div class="col-md-6">
                                 <div class="col-md-6">
                                     <div class="radio-container">
-                                        <label for="status" class="form-label">Status</label>
+                                        <label for="status" class="form-label">Activation Status</label>
                                         <br>
                                         <input type="radio" style="margin-top:10px" name="status" value="Yes">Yes
                                         <input type="radio"  name="status"  value="No">No
