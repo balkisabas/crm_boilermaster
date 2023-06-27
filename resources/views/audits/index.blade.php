@@ -169,8 +169,8 @@
                                             {{ $audit->new_values }}
                                     @endswitch
                                 </td>
-                                <td>{{ $datecreate =  date("d-m-Y H:i", strtotime ($audit->created_at)) }}</td>
-                                <td>{{ $dateupdate =  date("d-m-Y H:i", strtotime ($audit->updated_at))}}</td>
+                                <td>{{ $datecreate =  date("d-m-Y", strtotime ($audit->created_at)) }}</td>
+                                <td>{{ $dateupdate =  date("d-m-Y", strtotime ($audit->updated_at))}}</td>
                             </tr>
                             @endforeach
                             @endif
