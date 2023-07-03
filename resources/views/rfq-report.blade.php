@@ -178,7 +178,7 @@ var newTextField =  $(`<div class="alert alert-warning">Please Select Year From 
 
                             @else 
 
-                            @php  $cust = DB::table('Customers')->where('id', '=', $m->cust_name)->first();  @endphp
+                            @php  $cust = DB::table('customers')->where('id', '=', $m->cust_name)->first();  @endphp
                             <td  align="center">{{ $cust->name}}</td>
                             
                             @endif
